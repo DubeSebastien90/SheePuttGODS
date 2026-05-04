@@ -4,9 +4,7 @@ for (var j = 0; j < height; j++) {
         var current_drawn_tile = ds_grid_get(grid, i, j)
         var current_deco_tile = ds_grid_get(gridDeco, i, j)
 
-        if (tile_selected.x == i && tile_selected.y == j) {
-            draw_sprite(spr_tile, 1, iso_pos.x, iso_pos.y)
-        } else if current_drawn_tile.value == 6{
+		if current_drawn_tile.value == 6{
             var tile = 2
             if current_deco_tile.value != 0{
                 tile = 11 + current_deco_tile.value
