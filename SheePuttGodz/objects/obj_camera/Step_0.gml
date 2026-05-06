@@ -26,8 +26,19 @@ zoom_ammount = lerp(zoom_ammount,zoom_dir,0.1)
 if (isDragging) {
     x -= (mx - dragStartX) * zoom_ammount;
     y -= (my - dragStartY) * zoom_ammount;
+	
+	speedx = mx-dragStartX
+	speedy = my-dragStartY
+	
     dragStartX = mx;
     dragStartY = my;
+	
+} else {
+	speedx = lerp(speedx,0,0.2)
+	speedy = lerp(speedy,0,0.2)
+	
+	x -= speedx * zoom_ammount;
+	y -= speedy * zoom_ammount;
 }
 
 camera_set_view_pos(cam,  x - _camW / 2, y - _camH / 2);

@@ -10,5 +10,8 @@ isDragging   = false;
 dragStartX   = 0;
 dragStartY   = 0;
 
+speedx = 0
+speedy = 0
+
 view_enabled    = true;
 view_visible[0] = true;
