@@ -30,7 +30,7 @@
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"scr_get_levels","path":"scripts/scr_get_levels/scr_get_levels.yy",},},
     {"id":{"name":"scr_screenShake","path":"scripts/scr_screenShake/scr_screenShake.yy",},},
-    {"id":{"name":"spr_decoration","path":"sprites/spr_decoration/spr_decoration.yy",},},
+    {"id":{"name":"spr_deco","path":"sprites/spr_deco/spr_deco.yy",},},
     {"id":{"name":"spr_feet","path":"sprites/spr_feet/spr_feet.yy",},},
     {"id":{"name":"spr_marker","path":"sprites/spr_marker/spr_marker.yy",},},
     {"id":{"name":"spr_mutton","path":"sprites/spr_mutton/spr_mutton.yy",},},

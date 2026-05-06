@@ -78,31 +78,40 @@ function _build_levels(_level_data){
             }
         }
         
-        var _sprites_idx = ds_grid_create(lw, lh);
-        ds_grid_copy(_sprites_idx, _grid);
+        var _tiles_idx = ds_grid_create(lw, lh);
+        ds_grid_copy(_tiles_idx, _grid);
+        
+        var _decos_idx = ds_grid_create(lw, lh);
         
         for (var j = lh - 1; j >= 0; j--) {
             for (var i = lw - 1; i >= 0; i--) {
-                var value = ds_grid_get(_sprites_idx, i, j)
+                var value = ds_grid_get(_tiles_idx, i, j)
                 if value == 0 continue;
                     
-                ds_grid_set(_sprites_idx, i, j, _map_sprite_idx(ds_grid_get(_sprites_idx, i, j)));
+                var deco = random_range(0, 1);
+                if deco > 0.96 {
+                    deco = choose(1, 2, 3);
+                    deco += (value - 1) * 3
+                } else deco = 0;
+                ds_grid_set(_decos_idx, i, j, deco);
+                    
+                ds_grid_set(_tiles_idx, i, j, _map_sprite_idx(ds_grid_get(_tiles_idx, i, j)));
                     
                 if (j == 0) {
-                    ds_grid_set(_sprites_idx, i, j, ds_grid_get(_sprites_idx, i, j) + 2);
+                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 2);
                 } else if (value != ds_grid_get(_grid, i, j - 1)) {
-                    ds_grid_set(_sprites_idx, i, j, ds_grid_get(_sprites_idx, i, j) + 2);
+                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 2);
                 }
                 
                 if (i == 0) {
-                    ds_grid_set(_sprites_idx, i, j, ds_grid_get(_sprites_idx, i, j) + 1);
+                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 1);
                 } else if (value != ds_grid_get(_grid, i - 1, j)) {
-                    ds_grid_set(_sprites_idx, i, j, ds_grid_get(_sprites_idx, i, j) + 1);
+                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 1);
                 }
             }
         }
         
-        levels[idx] = { grid: _grid, sprites_idx: _sprites_idx, width: lw, height: lh }
+        levels[idx] = { grid: _grid, tiles_idx: _tiles_idx, decos_idx: _decos_idx, width: lw, height: lh };
     }
     
     return levels

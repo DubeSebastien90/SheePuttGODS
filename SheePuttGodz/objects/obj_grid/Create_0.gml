@@ -72,3 +72,6 @@ function is_walkable(tile_x, tile_y) {
     var value = ds_grid_get(level.grid, tile_x, tile_y);
     return array_contains(WALKABLE_TILES, value);
 }
+
+test_x = 6;
+test_y = 12;
