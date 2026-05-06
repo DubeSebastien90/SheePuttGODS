@@ -28,6 +28,7 @@
     {"id":{"name":"obj_mutton","path":"objects/obj_mutton/obj_mutton.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"scr_get_levels","path":"scripts/scr_get_levels/scr_get_levels.yy",},},
+    {"id":{"name":"scr_screenShake","path":"scripts/scr_screenShake/scr_screenShake.yy",},},
     {"id":{"name":"spr_decoration","path":"sprites/spr_decoration/spr_decoration.yy",},},
     {"id":{"name":"spr_mutton","path":"sprites/spr_mutton/spr_mutton.yy",},},
     {"id":{"name":"spr_palette","path":"sprites/spr_palette/spr_palette.yy",},},

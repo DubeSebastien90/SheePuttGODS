@@ -13,11 +13,13 @@ if (mouse_check_button_released(mb_right)) {
     isDragging = false;
 }
 
-if mouse_wheel_down(){
-	zoom_dir -= 0.01
-}
 if mouse_wheel_up(){
-	zoom_dir += 0.01
+	zoom_dir *= 0.96
+	zoom_dir = max(0.2,zoom_dir)
+}
+if mouse_wheel_down(){
+	zoom_dir *= 1.04
+	zoom_dir = min(1.2,zoom_dir)
 }
 
 zoom_ammount = lerp(zoom_ammount,zoom_dir,0.1)
@@ -41,5 +43,13 @@ if (isDragging) {
 	y -= speedy * zoom_ammount;
 }
 
-camera_set_view_pos(cam,  x - _camW / 2, y - _camH / 2);
+//screen shake
+var _x = random_range(-shake_remain,shake_remain)*zoom_ammount;
+var _y = random_range(-shake_remain,shake_remain)*zoom_ammount;
+shake_remain = max(0,shake_remain-((1/shake_lenght)*shake_magnitude));
+if shake_lenght <= 0{
+	shake_remain = 0
+}
+
+camera_set_view_pos(cam,  (x +_x) - _camW / 2, (y + _y) - _camH / 2);
 camera_set_view_size(cam, _camW, _camH);

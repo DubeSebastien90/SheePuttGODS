@@ -15,3 +15,8 @@ speedy = 0
 
 view_enabled    = true;
 view_visible[0] = true;
+
+//shake
+shake_magnitude = 0;
+shake_remain = 0;
+shake_lenght = 0;
