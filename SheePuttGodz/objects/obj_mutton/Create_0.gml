@@ -27,8 +27,8 @@ function _try_move(dx, dy, dz) {
         var corner_y_top = grid_y - r;
         var corner_y_bot = grid_y + r;
         
-        if (obj_grid._is_walkable(floor(edge_x), floor(corner_y_top))
-         && obj_grid._is_walkable(floor(edge_x), floor(corner_y_bot))) {
+        if (obj_grid.is_walkable(floor(edge_x), floor(corner_y_top))
+         && obj_grid.is_walkable(floor(edge_x), floor(corner_y_bot))) {
             applied_dx = dx;
         }
     }
@@ -40,8 +40,8 @@ function _try_move(dx, dy, dz) {
         var corner_x_left  = grid_x - r;
         var corner_x_right = grid_x + r;
         
-        if (obj_grid._is_walkable(floor(corner_x_left),  floor(edge_y))
-         && obj_grid._is_walkable(floor(corner_x_right), floor(edge_y))) {
+        if (obj_grid.is_walkable(floor(corner_x_left),  floor(edge_y))
+         && obj_grid.is_walkable(floor(corner_x_right), floor(edge_y))) {
             applied_dy = dy;
         }
     }

@@ -78,26 +78,31 @@ function _build_levels(_level_data){
             }
         }
         
+        var _sprites_idx = ds_grid_create(lw, lh);
+        ds_grid_copy(_sprites_idx, _grid);
+        
         for (var j = lh - 1; j >= 0; j--) {
             for (var i = lw - 1; i >= 0; i--) {
-                var value = ds_grid_get(_grid, i, j)
+                var value = ds_grid_get(_sprites_idx, i, j)
                 if value == 0 continue;
                     
+                ds_grid_set(_sprites_idx, i, j, _map_sprite_idx(ds_grid_get(_sprites_idx, i, j)));
+                    
                 if (j == 0) {
-                    ds_grid_set(_grid, i, j, ds_grid_get(_grid, i, j) + 2)
+                    ds_grid_set(_sprites_idx, i, j, ds_grid_get(_sprites_idx, i, j) + 2);
                 } else if (value != ds_grid_get(_grid, i, j - 1)) {
-                    ds_grid_set(_grid, i, j, ds_grid_get(_grid, i, j) + 2)
+                    ds_grid_set(_sprites_idx, i, j, ds_grid_get(_sprites_idx, i, j) + 2);
                 }
                 
                 if (i == 0) {
-                    ds_grid_set(_grid, i, j, ds_grid_get(_grid, i, j) + 1)
+                    ds_grid_set(_sprites_idx, i, j, ds_grid_get(_sprites_idx, i, j) + 1);
                 } else if (value != ds_grid_get(_grid, i - 1, j)) {
-                    ds_grid_set(_grid, i, j, ds_grid_get(_grid, i, j) + 1)
+                    ds_grid_set(_sprites_idx, i, j, ds_grid_get(_sprites_idx, i, j) + 1);
                 }
             }
         }
         
-        levels[idx] = { grid: _grid, width: lw, height: lh }
+        levels[idx] = { grid: _grid, sprites_idx: _sprites_idx, width: lw, height: lh }
     }
     
     return levels
@@ -107,7 +112,11 @@ function _map_character(c) {
     switch (c) {
         case "=": return 0;
         case ".": return 1;
-        case "~": return 5;
+        case "~": return 2;
         default:  return 0;
     }
+}
+
+function _map_sprite_idx(n) {
+    return max((n - 1) * 4 + 1, 0)
 }

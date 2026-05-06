@@ -3,13 +3,14 @@ switch (state) {
     case "marking":
         var game_pos = obj_grid.room_pos_to_game_pos(mouse_x, mouse_y);
         
-        if obj_grid.is_land(game_pos.x, game_pos.y) {
+        if obj_grid.is_stompable(game_pos.x, game_pos.y) {
             x = mouse_x;
             y = mouse_y;
 
             if (mouse_check_button_pressed(mb_left)) {
                 impact.x = x;
                 impact.y = y;
+                show_debug_message(impact)
                 height_offset = start_height;
                 sprite_index = spr_feet;
                 image_index = 0;

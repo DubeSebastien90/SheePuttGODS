@@ -1,6 +1,6 @@
 randomize()
 
-current_level = 0
+level_index = 0
 levels = get_levels()
 level = levels[0];
 
@@ -36,21 +36,6 @@ function game_pos_to_room_pos(game_x, game_y) {
     };
 }
 
-function is_land(game_x, game_y) {
-    var floor_x = floor(game_x + 0.35)
-    var floor_y = floor(game_y + 0.35)
-    
-    if  (floor_x < 0 || 
-        floor_x >= level.width ||
-        floor_y < 0 ||
-        floor_y >= level.height) {
-            return false;
-        }
-        
-    var value = ds_grid_get(level.grid, floor_x, floor_y);
-    return value > 0 && value < 5;
-}
-
 function _iso_vec_to_screen(dx, dy) {
     var screen_dx = (dx - dy) * tile_w;
     var screen_dy = (dx + dy) * tile_h;
@@ -65,14 +50,25 @@ function _world_pos_to_tile(world_x, world_y) {
     return {x: grid_x, y: grid_y};
 }
 
-WALKABLE_TILES = [1,2,3,4]
+STOMPABLE_TILES = [1]
 
-function _is_walkable(tile_x, tile_y) {
-    // Vérifier les bornes de la grille
-    if (tile_x < 0 || tile_y < 0) return false;
-    if (tile_x >= ds_grid_width(level.grid) || tile_y >= ds_grid_height(level.grid)) return false;
+function is_stompable(game_x, game_y) {
+    var floor_x = floor(game_x + 1)
+    var floor_y = floor(game_y)
     
-    // Récupérer la valeur de la tuile
+    if (floor_x < 0 || floor_y < 0) return false;
+    if (floor_x >= level.width || floor_y >= level.height) return false;
+        
+    var value = ds_grid_get(level.grid, floor_x, floor_y);
+    return array_contains(STOMPABLE_TILES, value);
+}
+
+WALKABLE_TILES = [1]
+
+function is_walkable(tile_x, tile_y) {
+    if (tile_x < 0 || tile_y < 0) return false;
+    if (tile_x >= level.width || tile_y >= level.height) return false;
+    
     var value = ds_grid_get(level.grid, tile_x, tile_y);
     return array_contains(WALKABLE_TILES, value);
 }
