@@ -53,9 +53,9 @@ function _tile_to_world_pos(grid_x, grid_y) {
     return {x: world_x, y: world_y};
 }
 
-function _iso_vec_to_screen(dx, dy, dz) {
+function _iso_vec_to_screen(dx, dy) {
     var screen_dx = (dx - dy) * tile_w;
-    var screen_dy = (dx + dy) * tile_h - dz * tile_h_vertical;
+    var screen_dy = (dx + dy) * tile_h;
     return {x: screen_dx, y: screen_dy};
 }
 

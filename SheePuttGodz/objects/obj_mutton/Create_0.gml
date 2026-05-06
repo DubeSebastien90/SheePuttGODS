@@ -1,12 +1,17 @@
-walkspd = 0.1
+walkspd = 0.02
 
 dx = 0
 dy = 0
 dz = 0
 
+z = 0
+jumpForce = 1
+grav = 0.05
+
 function _try_move(dx, dy, dz) {
     var applied_dx = 0;
     var applied_dy = 0;
+	var applied_dz = 0;
 	
 	var grid_pos = obj_grid._world_pos_to_tile(x,y)
 	
@@ -41,5 +46,12 @@ function _try_move(dx, dy, dz) {
         }
     }
  
-    return {dx: applied_dx, dy: applied_dy, dz: dz};
+	// Axe Z
+	if (z + dz < 0) {
+		applied_dz = -z;  // amener pile à 0, pas plus
+	} else {
+		applied_dz = dz;
+	}
+ 
+    return {dx: applied_dx, dy: applied_dy, dz: applied_dz};
 }
