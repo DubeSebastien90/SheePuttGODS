@@ -23,7 +23,18 @@ for (var j = 0; j < level.height; j++) {
         }
         draw_sprite(spr_deco, deco_idx, iso_pos.x - 2, iso_pos.y + 9);
         shader_reset();
+		
     }
 }
+
+
+with(obj_mutton){
+	var _offset = 0
+	if on_water && !in_air{ 
+		_offset = water_offset
+	}
+	draw_sprite(sprite_index, image_index, x, y + _offset - (z * 2));  // ajuste le facteur selon ton iso
+}
+
 
 shd_time += 0.05;

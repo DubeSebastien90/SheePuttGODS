@@ -64,6 +64,7 @@ function is_stompable(game_x, game_y) {
 }
 
 WALKABLE_TILES = [1]
+SWIMMABLE_TILES = [2]
 
 function is_walkable(tile_x, tile_y) {
     if (tile_x < 0 || tile_y < 0) return false;
@@ -71,6 +72,14 @@ function is_walkable(tile_x, tile_y) {
     
     var value = ds_grid_get(level.grid, tile_x, tile_y);
     return array_contains(WALKABLE_TILES, value);
+}
+
+function is_swimable(tile_x, tile_y) {
+    if (tile_x < 0 || tile_y < 0) return false;
+    if (tile_x >= level.width || tile_y >= level.height) return false;
+    
+    var value = ds_grid_get(level.grid, tile_x, tile_y);
+    return array_contains(SWIMMABLE_TILES, value);
 }
 
 wiggle_time = shader_get_uniform(shd_wiggle, "u_time");
