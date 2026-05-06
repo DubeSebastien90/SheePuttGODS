@@ -5,6 +5,7 @@ camH         = room_height;
 x            = room_width  / 2;
 y            = room_height / 2;
 zoom_ammount = 0.3;
+zoom_dir = zoom_ammount;
 isDragging   = false;
 dragStartX   = 0;
 dragStartY   = 0;
