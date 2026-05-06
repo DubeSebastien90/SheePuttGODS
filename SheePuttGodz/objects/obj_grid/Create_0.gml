@@ -73,5 +73,13 @@ function is_walkable(tile_x, tile_y) {
     return array_contains(WALKABLE_TILES, value);
 }
 
-test_x = 6;
-test_y = 12;
+wiggle_time = shader_get_uniform(shd_wiggle, "u_time");
+wiggle_amplitude = shader_get_uniform(shd_wiggle, "u_amplitude");
+wiggle_frequency = shader_get_uniform(shd_wiggle, "u_frequency");
+wiggle_speed = shader_get_uniform(shd_wiggle, "u_speed");
+
+wave_time = shader_get_uniform(shd_wave, "u_time");
+wave_speed = shader_get_uniform(shd_wave, "u_speed");
+wave_intensity = shader_get_uniform(shd_wave, "u_intensity");
+
+shd_time = 0;
