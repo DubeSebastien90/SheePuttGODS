@@ -12,10 +12,6 @@ if debug_mode {
         level_index = (level_index - 1 + array_length(levels)) mod array_length(levels);
         level = levels[level_index];
     }
-    
-    if keyboard_check_pressed(vk_space){
-	   screenShake(4,30)
-    }
 
     if keyboard_check_pressed(ord("R")){
         levels = get_levels()
