@@ -70,9 +70,9 @@ switch (state) {
 
     case "ascending":
         speed = min(speed + acceleration * 0.7, max_speed - 6);
-        height_offset += speed;
+        height_offset = min(height_offset + speed, start_height);
         
-        if (image_index <= 0) {
+        if (height_offset == start_height) {
             speed = 0;
             height_offset = 0;
             sprite_index = spr_marker;

@@ -15,6 +15,19 @@ switch (state) {
     break;
 
     default:
+        var t = 1 - (height_offset / start_height);
+        var shadow_size  = lerp(2, 0.5, t);
+        var shadow_alpha = lerp(0.0, 0.8, t);
+        draw_sprite_ext(
+            spr_feet_shadow, 0,
+            impact.x, impact.y,
+            shadow_size,
+            shadow_size,
+            0,
+            make_colour_rgb(30, 50, 20),
+            shadow_alpha
+        );
+        
         draw_sprite_ext(spr_feet, image_index, impact.x, impact.y - height_offset, 1, 1, 0, c_white, 1);
     break;
 }

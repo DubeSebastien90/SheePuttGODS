@@ -89,7 +89,7 @@ function _build_levels(_level_data){
                 if value == 0 continue;
                     
                 var deco = random_range(0, 1);
-                if deco > 0.96 {
+                if deco > 0.95 {
                     deco = choose(1, 2, 3);
                     deco += (value - 1) * 3
                 } else deco = 0;

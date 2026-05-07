@@ -1,7 +1,7 @@
 max_speed = 10;
 acceleration = 0.5;
 pre_impact_dist = 10;
-start_height  = 300;
+start_height  = 200;
 stomp_hold_max = 30;
 
 state = "marking"
