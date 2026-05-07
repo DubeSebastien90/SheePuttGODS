@@ -32,6 +32,24 @@ switch (state) {
             image_speed = 1;
             screenShake(3,30);
             shockwave_ready = true;
+
+            var _feet_tile = obj_grid._world_pos_to_tile(x, y);
+            var _ftx = _feet_tile.x;
+            var _fty = _feet_tile.y;
+            with (obj_mutton) {
+                var _mut_tile = obj_grid._world_pos_to_tile(x, y);
+                var _ddx = _mut_tile.x - _ftx;
+                var _ddy = _mut_tile.y - _fty;
+                var _dist = sqrt(_ddx * _ddx + _ddy * _ddy);
+                if (_dist > 0 && _dist <= 10) {
+                    var _force = other.max_force_repulsion * (1 - _dist / 3);
+                    dx += (_ddx / _dist) * _force;
+                    dy += (_ddy / _dist) * _force;
+                    dz = jumpForce;
+                    in_air = true;
+                }
+            }
+
             state = "stomping";
         }
     break;

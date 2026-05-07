@@ -13,6 +13,10 @@ on_water = false
 in_air = false
 
 water_offset = 4
+depth_offset = 6
+collision_offset = 3
+
+canControl = false
 
 function _try_move(dx, dy, dz) {
     var applied_dx = 0;

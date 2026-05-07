@@ -14,3 +14,5 @@ stomp_hold = 0;
 shockwave_ready = false;
 shockwave_spr_idx = 0;
 shockwave_speed = 0.3;
+
+max_force_repulsion = 0.05;

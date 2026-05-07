@@ -50,6 +50,15 @@ function _world_pos_to_tile(world_x, world_y) {
     return {x: grid_x, y: grid_y};
 }
 
+function _calculate_distance_and_orientation(tile_a, tile_b) {
+    var dx = tile_b.x - tile_a.x;
+    var dy = tile_b.y - tile_a.y;
+    var dz = 0;
+    var distance = sqrt(dx * dx + dy * dy + dz * dz);
+    var angle = arctan2(dy, dx);
+    return { dx: dx, dy: dy, dz: dz, distance: distance, angle: angle };
+}
+
 STOMPABLE_TILES = [1]
 
 function is_stompable(game_x, game_y) {

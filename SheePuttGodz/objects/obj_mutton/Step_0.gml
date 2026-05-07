@@ -9,8 +9,10 @@ var input_x = press_right - press_left;
 var input_y = press_down  - press_up;   
 
 // Conversion écran → grille
+if canControl{
 dx = (input_x + input_y) * walkspd;
 dy = (input_y - input_x) * walkspd;
+}
 
 dz -= grav;
 
@@ -22,7 +24,7 @@ grid_y = grid_pos.y;
 on_land  = obj_grid.is_walkable(floor(grid_x), floor(grid_y));
 on_water = obj_grid.is_swimable(floor(grid_x), floor(grid_y));
 
-if (press_jump && z <= 0 && on_land) {
+if (press_jump && z <= 0 && on_land) && canControl{
     dz = jumpForce;
 	in_air = true
 }
@@ -38,7 +40,9 @@ y += screen_d.y
 
 
 if (collisions_d.dz == 0 && dz < 0) {
+    dx = 0;
+    dy = 0;
     dz = 0;
-    z = 0;  // au cas où on est légèrement sous 0
+    z = 0;
 	in_air = false
 }
