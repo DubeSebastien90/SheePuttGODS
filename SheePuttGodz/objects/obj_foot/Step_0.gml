@@ -63,6 +63,7 @@ switch (state) {
             if (stomp_hold >= stomp_hold_max) {
                 stomp_hold = 0;
                 image_speed = -0.1;
+                instance_create_depth(impact.x, impact.y, -1, obj_footprint)
                 state = "ascending";
             }
         }

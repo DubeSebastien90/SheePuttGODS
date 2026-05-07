@@ -26,6 +26,7 @@
   "resources":[
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
     {"id":{"name":"obj_foot","path":"objects/obj_foot/obj_foot.yy",},},
+    {"id":{"name":"obj_footprint","path":"objects/obj_footprint/obj_footprint.yy",},},
     {"id":{"name":"obj_grid","path":"objects/obj_grid/obj_grid.yy",},},
     {"id":{"name":"obj_mutton","path":"objects/obj_mutton/obj_mutton.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
