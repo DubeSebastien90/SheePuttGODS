@@ -15,7 +15,7 @@ switch (state) {
                 sprite_index = spr_foot;
                 image_index = 0;
                 image_speed = 0;
-                shockwave_spr_idx = 0;
+                clouds_spr_idx = 0;
                 state = "descending";
             }
         } else {
@@ -32,7 +32,9 @@ switch (state) {
             speed = 0;
             image_speed = 1;
             screenShake(3,30);
-            shockwave_ready = true;
+            clouds_active = true;
+            shockwave_active = true;
+            shockwave_time   = 0;
 
             var _feet_tile = obj_grid.room_pos_to_game_pos(impact.x, impact.y);
             var _ftx = _feet_tile.x;
@@ -63,7 +65,7 @@ switch (state) {
             if (stomp_hold >= stomp_hold_max) {
                 stomp_hold = 0;
                 image_speed = -0.1;
-                instance_create_depth(impact.x, impact.y, -1, obj_footprint)
+                //instance_create_depth(impact.x, impact.y, -1, obj_footprint)
                 state = "ascending";
             }
         }

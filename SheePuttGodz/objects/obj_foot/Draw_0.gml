@@ -1,10 +1,26 @@
-if shockwave_ready {
-    shockwave_spr_idx += shockwave_speed;
-    draw_sprite(spr_shockwave, floor(shockwave_spr_idx), impact.x, impact.y);
+if clouds_active {
+    clouds_spr_idx += clouds_speed;
+    draw_sprite(spr_shockwave, floor(clouds_spr_idx), impact.x, impact.y);
     
-    if shockwave_spr_idx > 6 {
-        shockwave_ready = false;
+    if clouds_spr_idx > 6 {
+        clouds_active = false;
     }
+}
+
+if (shockwave_active) {
+    shockwave_time++;
+
+    var r1 = shockwave_time * shockwave_expand;
+    var a1 = max(0, 1 - shockwave_time / shockwave_duration);
+    draw_wobbly_ring(impact.x, impact.y, r1, a1);
+
+    if (shockwave_time >= shockwave_delay) {
+        var t2 = shockwave_time - shockwave_delay;
+        draw_wobbly_ring(impact.x, impact.y, t2 * shockwave_expand, max(0, 1 - t2 / shockwave_duration));
+    }
+
+    draw_set_alpha(1);
+    if (shockwave_time >= shockwave_duration + shockwave_delay) shockwave_active = false;
 }
 
 switch (state) {
