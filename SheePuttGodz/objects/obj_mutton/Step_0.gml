@@ -46,3 +46,6 @@ if (collisions_d.dz == 0 && dz < 0) {
     z = 0;
 	in_air = false
 }
+
+//layers
+depth = -bbox_bottom

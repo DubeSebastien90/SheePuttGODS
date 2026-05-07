@@ -86,3 +86,5 @@ switch (state) {
         }
     break;
 }
+
+depth = -impact.y-origin_ofsset_y
