@@ -19,7 +19,7 @@ switch (state) {
         var shadow_size  = lerp(2, 0.5, t);
         var shadow_alpha = lerp(0.0, 0.8, t);
         draw_sprite_ext(
-            spr_feet_shadow, 0,
+            spr_foot_shadow, 0,
             impact.x, impact.y,
             shadow_size,
             shadow_size,
@@ -28,6 +28,6 @@ switch (state) {
             shadow_alpha
         );
         
-        draw_sprite_ext(spr_feet, image_index, impact.x, impact.y - height_offset, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_foot, image_index, impact.x, impact.y - height_offset, 1, 1, 0, c_white, 1);
     break;
 }

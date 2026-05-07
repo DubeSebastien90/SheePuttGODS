@@ -36,5 +36,4 @@ for (var j = 0; j < level.height; j++) {
     }
 }
 
-
 shd_time += 0.05;

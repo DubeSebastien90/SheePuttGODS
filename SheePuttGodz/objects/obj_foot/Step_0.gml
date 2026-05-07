@@ -12,7 +12,7 @@ switch (state) {
                 show_debug_message(impact)
 				show_debug_message(game_pos)
                 height_offset = start_height;
-                sprite_index = spr_feet;
+                sprite_index = spr_foot;
                 image_index = 0;
                 image_speed = 0;
                 shockwave_spr_idx = 0;

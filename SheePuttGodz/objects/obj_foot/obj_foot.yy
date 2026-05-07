@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_feet",
+  "%Name":"obj_foot",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_feet",
+  "name":"obj_foot",
   "overriddenProperties":[],
   "parent":{
     "name":"Objets",
@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_feet",
-    "path":"sprites/spr_feet/spr_feet.yy",
+    "name":"spr_foot",
+    "path":"sprites/spr_foot/spr_foot.yy",
   },
   "spriteMaskId":null,
   "visible":true,
