@@ -31,7 +31,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_feet",
+    "path":"sprites/spr_feet/spr_feet.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

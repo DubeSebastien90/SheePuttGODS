@@ -1,5 +1,4 @@
 switch (state) {
-
     case "marking":
         var game_pos = obj_grid.room_pos_to_game_pos(mouse_x, mouse_y);
         
@@ -15,6 +14,7 @@ switch (state) {
                 sprite_index = spr_feet;
                 image_index = 0;
                 image_speed = 0;
+                shockwave_spr_idx = 0;
                 state = "descending";
             }
         } else {
@@ -31,6 +31,7 @@ switch (state) {
             speed = 0;
             image_speed = 1;
             screenShake(3,30);
+            shockwave_ready = true;
             state = "stomping";
         }
     break;

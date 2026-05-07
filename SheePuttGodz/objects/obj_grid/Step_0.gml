@@ -14,7 +14,7 @@ if debug_mode {
     }
     
     if keyboard_check_pressed(vk_space){
-	   screenShake(3,30)
+	   screenShake(4,30)
     }
 
     if keyboard_check_pressed(ord("R")){
