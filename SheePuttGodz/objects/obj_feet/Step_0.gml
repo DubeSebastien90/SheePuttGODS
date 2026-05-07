@@ -10,6 +10,7 @@ switch (state) {
                 impact.x = x;
                 impact.y = y;
                 show_debug_message(impact)
+				show_debug_message(game_pos)
                 height_offset = start_height;
                 sprite_index = spr_feet;
                 image_index = 0;
@@ -33,16 +34,16 @@ switch (state) {
             screenShake(3,30);
             shockwave_ready = true;
 
-            var _feet_tile = obj_grid._world_pos_to_tile(x, y);
+            var _feet_tile = obj_grid.room_pos_to_game_pos(impact.x, impact.y);
             var _ftx = _feet_tile.x;
             var _fty = _feet_tile.y;
             with (obj_mutton) {
-                var _mut_tile = obj_grid._world_pos_to_tile(x, y);
+                var _mut_tile = obj_grid.room_pos_to_game_pos(x, y);
                 var _ddx = _mut_tile.x - _ftx;
                 var _ddy = _mut_tile.y - _fty;
                 var _dist = sqrt(_ddx * _ddx + _ddy * _ddy);
-                if (_dist > 0 && _dist <= 10) {
-                    var _force = other.max_force_repulsion * (1 - _dist / 3);
+                if (_dist > 0 && _dist <= other.max_repulsion_dist) {
+                    var _force = other.max_force_repulsion * (1 - _dist / other.max_repulsion_dist);
                     dx += (_ddx / _dist) * _force;
                     dy += (_ddy / _dist) * _force;
                     dz = jumpForce;

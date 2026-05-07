@@ -15,4 +15,6 @@ shockwave_ready = false;
 shockwave_spr_idx = 0;
 shockwave_speed = 0.3;
 
-max_force_repulsion = 0.05;
+max_force_repulsion = 0.08;
+max_jump_dist = 2
+max_repulsion_dist = 3

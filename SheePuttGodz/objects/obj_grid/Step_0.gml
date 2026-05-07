@@ -18,3 +18,5 @@ if debug_mode {
         level = levels[level_index];
     }
 }
+
+selected_tile = room_pos_to_game_pos(mouse_x,mouse_y)

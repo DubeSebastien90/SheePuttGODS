@@ -26,6 +26,12 @@ for (var j = 0; j < level.height; j++) {
             draw_sprite(spr_deco, deco_idx, iso_pos.x - 2, iso_pos.y + 9);
             shader_reset();
         }
+		
+		if ceil(selected_tile.x) == i && floor(selected_tile.y) == j{
+			//draw_sprite(spr_tile,9,iso_pos.x,iso_pos.y)
+		}
+		
+		//draw_text_transformed(iso_pos.x, iso_pos.y, "i:"+string(i)+", j:"+string(j),0.2,0.2,0)
         
     }
 }
