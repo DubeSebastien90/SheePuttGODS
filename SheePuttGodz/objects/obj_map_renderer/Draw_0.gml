@@ -17,7 +17,7 @@ if (decos_static_exists) vertex_submit(v_buffer_decos_static, pr_trianglelist, _
 if (decos_wiggle_exists) {
     shader_set(shd_wiggle);
     shader_set_uniform_f(wiggle_time, current_time / 1000);
-    shader_set_uniform_f(wiggle_amplitude, 0.5);
+    shader_set_uniform_f(wiggle_amplitude, 1.0);
     shader_set_uniform_f(wiggle_frequency, 0.1);
     shader_set_uniform_f(wiggle_speed, 1.0);
     vertex_submit(v_buffer_decos_wiggle, pr_trianglelist, _tex);

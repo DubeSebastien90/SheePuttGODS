@@ -1,9 +1,5 @@
 randomise();
 
-gpu_set_ztestenable(true);
-gpu_set_zwriteenable(true);
-gpu_set_alphatestenable(true);
-
 v_format = undefined;
 v_buffer_solid = undefined;
 v_buffer_water = undefined;
@@ -13,6 +9,9 @@ solid_exists = false;
 water_exists = false;
 decos_wiggle_exists = false;
 decos_static_exists = false;
+
+gpu_set_ztestenable(true);
+gpu_set_alphatestenable(true);
 
 vertex_format_begin();
 vertex_format_add_position_3d();
@@ -63,7 +62,7 @@ function rebuild_mesh(_lvl) {
                     _add_tile_to_mesh(v_buffer_decos_static, _x, _y, _deco_id, spr_decos, 0.01);
                     _count_d_s++;
                 } else {
-                     _add_tile_to_mesh(v_buffer_decos_wiggle, _x, _y, _deco_id, spr_decos, 0.01);
+                     _add_tile_to_mesh(v_buffer_decos_wiggle, _x, _y, _deco_id, spr_decos, 0.005);
                     _count_d_w++;
                 }
             }

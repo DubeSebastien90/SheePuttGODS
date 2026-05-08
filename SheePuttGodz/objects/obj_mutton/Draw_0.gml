@@ -1,0 +1,1 @@
+draw_iso_sprite(spr_mutton, image_index, gx, gy, gz);
