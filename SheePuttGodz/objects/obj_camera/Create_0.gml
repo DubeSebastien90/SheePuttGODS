@@ -2,8 +2,8 @@
 cam          = view_camera[0];
 camW         = room_width;
 camH         = room_height;
-x            = room_width  / 2;
-y            = room_height / 2;
+x            = room_width/2;
+y            = room_height/2;
 zoom_ammount = 0.3;
 zoom_dir = zoom_ammount;
 isDragging   = false;

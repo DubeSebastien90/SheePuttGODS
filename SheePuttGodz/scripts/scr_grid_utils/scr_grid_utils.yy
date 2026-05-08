@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_get_levels",
+  "%Name":"scr_grid_utils",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_get_levels",
+  "name":"scr_grid_utils",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

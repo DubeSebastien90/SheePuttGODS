@@ -1,7 +1,7 @@
 {
   "$GMShader":"",
-  "%Name":"shd_wave",
-  "name":"shd_wave",
+  "%Name":"shd_water",
+  "name":"shd_water",
   "parent":{
     "name":"Shaders",
     "path":"folders/Shaders.yy",
