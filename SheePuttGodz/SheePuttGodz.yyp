@@ -37,7 +37,7 @@
     {"id":{"name":"scr_screenShake","path":"scripts/scr_screenShake/scr_screenShake.yy",},},
     {"id":{"name":"shd_water","path":"shaders/shd_water/shd_water.yy",},},
     {"id":{"name":"shd_wiggle","path":"shaders/shd_wiggle/shd_wiggle.yy",},},
-    {"id":{"name":"spr_deco","path":"sprites/spr_deco/spr_deco.yy",},},
+    {"id":{"name":"spr_decos","path":"sprites/spr_decos/spr_decos.yy",},},
     {"id":{"name":"spr_foot_shadow","path":"sprites/spr_foot_shadow/spr_foot_shadow.yy",},},
     {"id":{"name":"spr_foot","path":"sprites/spr_foot/spr_foot.yy",},},
     {"id":{"name":"spr_footprint","path":"sprites/spr_footprint/spr_footprint.yy",},},

@@ -23,7 +23,7 @@ for (var j = 0; j < level.height; j++) {
                 shader_set_uniform_f(wiggle_frequency, 0.1);
                 shader_set_uniform_f(wiggle_speed, 1.0);
             }
-            draw_sprite(spr_deco, deco_idx, iso_pos.x - 2, iso_pos.y + 9);
+            draw_sprite(spr_decos, deco_idx, iso_pos.x - 2, iso_pos.y + 9);
             shader_reset();
         }
 		

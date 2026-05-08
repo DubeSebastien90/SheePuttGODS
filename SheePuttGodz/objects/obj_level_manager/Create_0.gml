@@ -1,5 +1,5 @@
 current_level_index = 0;
-level_data          = undefined;
+level_data = undefined;
 
 function load_level(_index) {
     current_level_index  = _index;
