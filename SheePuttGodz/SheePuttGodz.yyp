@@ -25,6 +25,8 @@
   "name":"SheePuttGodz",
   "resources":[
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
+    {"id":{"name":"obj_foot_ombre","path":"objects/obj_foot_ombre/obj_foot_ombre.yy",},},
+    {"id":{"name":"obj_foot_print","path":"objects/obj_foot_print/obj_foot_print.yy",},},
     {"id":{"name":"obj_foot","path":"objects/obj_foot/obj_foot.yy",},},
     {"id":{"name":"obj_footprint","path":"objects/obj_footprint/obj_footprint.yy",},},
     {"id":{"name":"obj_grid","path":"objects/obj_grid/obj_grid.yy",},},
