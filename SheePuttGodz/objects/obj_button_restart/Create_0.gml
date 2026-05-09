@@ -16,5 +16,5 @@ function is_hovered(){
 }
 
 function on_clicked(){
-	//TODO
+	obj_grid.change_level(obj_grid.level_index)
 }

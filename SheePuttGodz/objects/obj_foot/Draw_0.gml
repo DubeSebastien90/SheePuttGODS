@@ -25,9 +25,11 @@ if (shockwave_active) {
 
 switch (state) {
     case "marking":
+		if  obj_level_manager.menuState == 0{
         if (x >= 0 && y >= 0) {
             draw_sprite_ext(spr_marker, 0, x, y, 1, 1, 0, c_white, 0.8);
         }
+		}
     break;
 
     default:

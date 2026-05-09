@@ -16,5 +16,5 @@ function is_hovered(){
 }
 
 function on_clicked(){
-	//TODO
+	//
 }

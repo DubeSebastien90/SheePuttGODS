@@ -6,7 +6,7 @@ switch (state) {
             x = mouse_x;
             y = mouse_y;
 
-            if (mouse_check_button_pressed(mb_left)) {
+            if (mouse_check_button_pressed(mb_left) && obj_level_manager.menuState == 0) {
                 impact.x = x;
                 impact.y = y;
                 show_debug_message(impact)
