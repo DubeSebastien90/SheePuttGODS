@@ -15,7 +15,7 @@ clouds_active = false;
 clouds_spr_idx = 0;
 clouds_speed = 0.45;
 
-max_force_repulsion = 0.08;
+max_force_repulsion = 0.15;
 max_jump_dist = 2
 max_repulsion_dist = 4
 distStomp = 0.7
@@ -26,7 +26,7 @@ shockwave_expand = 2;
 shockwave_duration = 20;
 shockwave_delay = 5;
 shockwave_segments = 20;
-shockwave_wobble_amp = 0.15;
+shockwave_wobble_amp = 0.12;
 shockwave_wobble_freq = 6;
 
 origin_ofsset_y = 6
