@@ -1,0 +1,1 @@
+draw_text(room_width/2,room_height/2,string(nbMuttonArrived) + ", " + string(obj_grid.muttons_for_win))

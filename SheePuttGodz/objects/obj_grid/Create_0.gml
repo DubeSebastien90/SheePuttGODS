@@ -38,7 +38,8 @@ levels = get_levels()
 grid_origin_x = room_width  / 2;
 grid_origin_y = (room_height / 2) - (16 * tile_h); //todo remplacer 16 par level heit
 
-level = _build_level([levels[0]]);
+muttons_for_win = 10
+change_level(0)
 
 function _iso_vec_to_screen(dx, dy) {
     var screen_dx = (dx - dy) * tile_w;
@@ -102,6 +103,8 @@ function change_level(_level_index){
 	with(obj_end_gate){
 		instance_destroy()
 	}
+	level_index = _level_index
+	muttons_for_win = get_level_conditions(_level_index).muttons_for_win
 	level = _build_level([levels[_level_index]]);
 }
 

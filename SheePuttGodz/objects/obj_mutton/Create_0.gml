@@ -16,6 +16,9 @@ water_offset = 4
 depth_offset = 6
 collision_offset = 3
 
+grid_x = -1
+grid_y = -1
+
 canControl = false
 
 slowing = 0.001
@@ -74,4 +77,13 @@ function _try_move(dx, dy, dz) {
     }
     
     return {dx: applied_dx, dy: applied_dy, dz: applied_dz};
+}
+
+function isInWinnableTile(){
+	with(obj_end_gate){
+		if (tile_i = floor(other.grid_x) && tile_j = floor(other.grid_y)){
+			return true
+		}
+	}
+	return false
 }

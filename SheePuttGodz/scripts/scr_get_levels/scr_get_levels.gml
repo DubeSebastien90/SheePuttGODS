@@ -59,6 +59,16 @@ function get_levels() {
     return level_data;
 }
 
+function get_level_conditions(level_index){
+	var conditions = [
+	{muttons_for_win: 1},
+	{muttons_for_win: 2},
+	{muttons_for_win: 1},
+]
+
+return conditions[level_index]
+}
+
 function _build_level(_level_data){
     var levels = [];
     
@@ -82,7 +92,10 @@ function _build_level(_level_data){
 				if c = "e"{
 					val = 1
 					var end_gate_pos = obj_grid.game_pos_to_room_pos(i,j)
-					instance_create_layer(end_gate_pos.x,end_gate_pos.y,"dessous",obj_end_gate)
+					with(instance_create_layer(end_gate_pos.x,end_gate_pos.y,"dessous",obj_end_gate)){
+						tile_i = i
+						tile_j = j
+					}
 				}
                 ds_grid_set(_grid, i, j, val);
             }
