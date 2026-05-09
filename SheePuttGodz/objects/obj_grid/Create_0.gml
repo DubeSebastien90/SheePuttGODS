@@ -103,6 +103,9 @@ function change_level(_level_index){
 	with(obj_end_gate){
 		instance_destroy()
 	}
+	with(obj_foot_print){
+		instance_destroy()
+	}
 	level_index = _level_index
 	muttons_for_win = get_level_conditions(_level_index).muttons_for_win
 	level = _build_level([levels[_level_index]]);

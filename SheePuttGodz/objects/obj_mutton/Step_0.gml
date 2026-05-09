@@ -33,6 +33,10 @@ if (press_jump && z <= 0 && on_land) && canControl{
 var collisions_d = (_try_move(dx, dy, dz))
 
 scaredTime -= 1
+if on_water{
+	scaredTime = -1
+	slowing = water_slowing
+}
 
 screen_d = obj_grid._iso_vec_to_screen(collisions_d.dx,collisions_d.dy)
 z += collisions_d.dz;
@@ -64,4 +68,6 @@ x += screen_d.x
 y += screen_d.y
 
 //layers
+if !mort{
 depth = -bbox_bottom
+}
