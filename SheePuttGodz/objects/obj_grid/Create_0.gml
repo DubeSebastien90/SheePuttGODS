@@ -121,3 +121,4 @@ wave_speed = shader_get_uniform(shd_wave, "u_speed");
 wave_intensity = shader_get_uniform(shd_wave, "u_intensity");
 
 shd_time = 0;
+
