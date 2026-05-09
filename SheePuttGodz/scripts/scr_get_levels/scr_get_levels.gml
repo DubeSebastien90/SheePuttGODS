@@ -101,40 +101,55 @@ function _build_level(_level_data){
             }
         }
         
-        var _tiles_idx = ds_grid_create(lw, lh);
-        ds_grid_copy(_tiles_idx, _grid);
+        var _tiles = ds_grid_create(lw, lh);
+        var _decos_s = ds_grid_create(lw, lh);
+        var _decos_d = ds_grid_create(lw, lh);
         
-        var _decos_idx = ds_grid_create(lw, lh);
+        var null_value = {val:0, x:-1, y:-1};
         
         for (var j = lh - 1; j >= 0; j--) {
             for (var i = lw - 1; i >= 0; i--) {
-                var value = ds_grid_get(_tiles_idx, i, j)
-                if value == 0 continue;
-                    
-                var deco = random_range(0, 1);
-                if deco > 0.95 {
-                    deco = choose(1, 2, 3);
-                    deco += (value - 1) * 3
-                } else deco = 0;
-                ds_grid_set(_decos_idx, i, j, deco);
-                    
-                ds_grid_set(_tiles_idx, i, j, _map_sprite_idx(ds_grid_get(_tiles_idx, i, j)));
-                    
-                if (j == 0) {
-                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 2);
-                } else if (value != ds_grid_get(_grid, i, j - 1)) {
-                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 2);
+                var tile = ds_grid_get(_grid, i, j)
+                if tile == 0 {
+                    ds_grid_set(_tiles, i, j, null_value);
+                    ds_grid_set(_decos_s, i, j, null_value);
+                    ds_grid_set(_decos_d, i, j, null_value);
+                    continue;
                 }
                 
-                if (i == 0) {
-                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 1);
-                } else if (value != ds_grid_get(_grid, i - 1, j)) {
-                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 1);
+                var r_pos = obj_grid.game_pos_to_room_pos(i, j);
+                
+                //Decorations position and sprite
+                var deco_val = 0;
+                if random_range(0, 1) > 0.95 {
+                    deco_val = choose(1, 2, 3);
+                    deco_val += (tile - 1) * 3
                 }
+                var _g = tile == 1 ? _decos_d : _decos_s;
+                var _i = tile == 1 ? _decos_s : _decos_d;
+                ds_grid_set(_g, i, j, {val:deco_val, x:r_pos.x-2, y: r_pos.y+9});
+                ds_grid_set(_i, i, j, null_value);
+                    
+                //Tiles position and sprite
+                var tile_val = _map_sprite_idx(tile);
+                if (j == 0) tile_val += 2;
+                else if (tile != ds_grid_get(_grid, i, j-1)) tile_val += 2;
+                    
+                if (i == 0) tile_val += 1;
+                else if (tile != ds_grid_get(_grid, i-1, j)) tile_val += 1;
+                    
+                ds_grid_set(_tiles, i, j, {val:tile_val, x:r_pos.x, y:r_pos.y});
             }
         }
         
-        levels[idx] = { grid: _grid, tiles_idx: _tiles_idx, decos_idx: _decos_idx, width: lw, height: lh };
+        levels[idx] = {
+            grid: _grid,
+            tiles: _tiles,
+            decos_s: _decos_s,
+            decos_d: _decos_d,
+            width: lw,
+            height: lh 
+        };
     }
     
     return levels[0]
