@@ -4,17 +4,17 @@ function get_levels() {
           "~~~~~~~~~~~~~~~~",
           "~~~~~~~~~~~~~~~~",
           "~~~~.......~~~~~",
-          "~~~.........~~~~",
+          "~~~...m.m...~~~~",
+          "~~.....m.....~~~",
+          "~~....m.m....~~~",
           "~~...........~~~",
           "~~...........~~~",
           "~~...........~~~",
           "~~...........~~~",
           "~~...........~~~",
           "~~...........~~~",
-          "~~...........~~~",
-          "~~...........~~~",
-          "~~~.........~~~~",
-          "~~~~.......~~~~~",
+          "~~~eeeeeeeee~~~~",
+          "~~~~eeeeeee~~~~~",
           "~~~~~~~~~~~~~~~~",
           "~~~~~~~~~~~~~~~~",
       ],
@@ -56,13 +56,13 @@ function get_levels() {
       ],
     ];
     
-    return _build_levels(level_data);
+    return level_data;
 }
 
-function _build_levels(_level_data){
+function _build_level(_level_data){
     var levels = [];
     
-    for (var idx = 0; idx < array_length(_level_data); idx++) {
+    for (var idx = 0; idx < 1; idx++) {
         var rows = _level_data[idx];
         var lh   = array_length(rows);
         var lw   = string_length(rows[0]);
@@ -74,6 +74,16 @@ function _build_levels(_level_data){
             for (var i = 0; i < lw; i++) {
                 var c = string_char_at(row, i + 1);
                 var val = _map_character(c);
+				if c = "m"{
+					val = 1
+					var mutton_pos = obj_grid.game_pos_to_room_pos(i,j)
+					instance_create_layer(mutton_pos.x,mutton_pos.y,"Instances",obj_mutton)
+				}
+				if c = "e"{
+					val = 1
+					var end_gate_pos = obj_grid.game_pos_to_room_pos(i,j)
+					instance_create_layer(end_gate_pos.x,end_gate_pos.y,"dessous",obj_end_gate)
+				}
                 ds_grid_set(_grid, i, j, val);
             }
         }
@@ -114,7 +124,7 @@ function _build_levels(_level_data){
         levels[idx] = { grid: _grid, tiles_idx: _tiles_idx, decos_idx: _decos_idx, width: lw, height: lh };
     }
     
-    return levels
+    return levels[0]
 }
 
 function _map_character(c) {

@@ -1,14 +1,8 @@
 randomize()
 
-level_index = 0
-levels = get_levels()
-level = levels[0];
-
 tile_w = sprite_get_width(spr_tile) / 2;
 tile_h = sprite_get_height(spr_tile) / 4;
 tile_h_vertical = 2 * tile_h
-grid_origin_x = room_width  / 2;
-grid_origin_y = (room_height / 2) - (level.height * tile_h);
 
 function room_pos_to_game_pos(room_x, room_y) {
     var dx = room_x - grid_origin_x;
@@ -35,6 +29,16 @@ function game_pos_to_room_pos(game_x, game_y) {
         y: room_y
     };
 }
+
+
+level_index = 0
+levels = get_levels()
+
+
+grid_origin_x = room_width  / 2;
+grid_origin_y = (room_height / 2) - (16 * tile_h); //todo remplacer 16 par level heit
+
+level = _build_level([levels[0]]);
 
 function _iso_vec_to_screen(dx, dy) {
     var screen_dx = (dx - dy) * tile_w;
@@ -89,6 +93,16 @@ function is_swimable(tile_x, tile_y) {
     
     var value = ds_grid_get(level.grid, tile_x, tile_y);
     return array_contains(SWIMMABLE_TILES, value);
+}
+
+function change_level(_level_index){
+	with(obj_mutton){
+		instance_destroy()
+	}
+	with(obj_end_gate){
+		instance_destroy()
+	}
+	level = _build_level([levels[_level_index]]);
 }
 
 wiggle_time = shader_get_uniform(shd_wiggle, "u_time");

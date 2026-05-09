@@ -25,6 +25,7 @@
   "name":"SheePuttGodz",
   "resources":[
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
+    {"id":{"name":"obj_end_gate","path":"objects/obj_end_gate/obj_end_gate.yy",},},
     {"id":{"name":"obj_foot_ombre","path":"objects/obj_foot_ombre/obj_foot_ombre.yy",},},
     {"id":{"name":"obj_foot_print","path":"objects/obj_foot_print/obj_foot_print.yy",},},
     {"id":{"name":"obj_foot","path":"objects/obj_foot/obj_foot.yy",},},
@@ -37,6 +38,7 @@
     {"id":{"name":"shd_wave","path":"shaders/shd_wave/shd_wave.yy",},},
     {"id":{"name":"shd_wiggle","path":"shaders/shd_wiggle/shd_wiggle.yy",},},
     {"id":{"name":"spr_deco","path":"sprites/spr_deco/spr_deco.yy",},},
+    {"id":{"name":"spr_end_gate","path":"sprites/spr_end_gate/spr_end_gate.yy",},},
     {"id":{"name":"spr_foot_shadow","path":"sprites/spr_foot_shadow/spr_foot_shadow.yy",},},
     {"id":{"name":"spr_foot","path":"sprites/spr_foot/spr_foot.yy",},},
     {"id":{"name":"spr_footprint","path":"sprites/spr_footprint/spr_footprint.yy",},},
