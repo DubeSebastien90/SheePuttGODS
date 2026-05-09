@@ -1,125 +1,121 @@
-function get_levels() {
-    var level_data = [
-      [
-          "~~~~~~~~~~~~~~~~",
-          "~~~~~~~~~~~~~~~~",
-          "~~~~.......~~~~~",
-          "~~~.........~~~~",
-          "~~...........~~~",
-          "~~...........~~~",
-          "~~...........~~~",
-          "~~...........~~~",
-          "~~...........~~~",
-          "~~...........~~~",
-          "~~...........~~~",
-          "~~...........~~~",
-          "~~~.........~~~~",
-          "~~~~.......~~~~~",
-          "~~~~~~~~~~~~~~~~",
-          "~~~~~~~~~~~~~~~~",
-      ],
-      [
-          "~~~~~~~~~~~~~~~~",
-          "~..........~~~~~",
-          "~..........~~~~~",
-          "~..........~~~~~",
-          "~..........~~~~~",
-          "~..........~~~~~",
-          "~~~~~~.....~~~~~",
-          "~~~~~~.....~~~~~",
-          "~~~~~~.....~~~~~",
-          "~~~~~~.....~~~~~",
-          "~~~~~~.....~~~~~",
-          "~~~~~~~~~~.....~",
-          "~~~~~~~~~~.....~",
-          "~~~~~~~~~~.....~",
-          "~~~~~~~~~~.....~",
-          "~~~~~~~~~~~~~~~~",
-      ],
-      [
-          "~~~~~~~~~~~~~~~~",
-          "~~~~~~~~~~~~~~~~",
-          "~~.........~~~~~",
-          "~~.........~~~~~",
-          "~~...~~.~~..~~~~",
-          "~~...~.....~~~~~",
-          "~~...~.....~~~~~",
-          "~~...~~.~~..~~~~",
-          "~~.........~~~~~",
-          "~~.........~~~~~",
-          "~~.........~~~~~",
-          "~~.........~~~~~",
-          "~~~.........~~~~",
-          "~~~~.......~~~~~",
-          "~~~~~~~~~~~~~~~~",
-          "~~~~~~~~~~~~~~~~",
-      ],
-    ];
-    
-    return _build_levels(level_data);
+function get_level_data(_index) {
+    static _cache = undefined;
+    if (_cache == undefined) {
+        _cache = _build_levels([
+            [
+                "~~~~~~~~~~~~~~~~",
+                "~~~~~~~~~~~~~~~~",
+                "~~~~.......~~~~~",
+                "~~~.........~~~~",
+                "~~...........~~~",
+                "~~...........~~~",
+                "~~...........~~~",
+                "~~...........~~~",
+                "~~...........~~~",
+                "~~...........~~~",
+                "~~...........~~~",
+                "~~...........~~~",
+                "~~~.........~~~~",
+                "~~~~.......~~~~~",
+                "~~~~~~~~~~~~~~~~",
+                "~~~~~~~~~~~~~~~~",
+            ],
+            [
+                "~~~~~~~~~~~~~~~~",
+                "~..........~~~~~",
+                "~..........~~~~~",
+                "~..........~~~~~",
+                "~..........~~~~~",
+                "~..........~~~~~",
+                "~~~~~~.....~~~~~",
+                "~~~~~~.....~~~~~",
+                "~~~~~~.....~~~~~",
+                "~~~~~~.....~~~~~",
+                "~~~~~~.....~~~~~",
+                "~~~~~~~~~~.....~",
+                "~~~~~~~~~~.....~",
+                "~~~~~~~~~~.....~",
+                "~~~~~~~~~~.....~",
+                "~~~~~~~~~~~~~~~~",
+            ],
+            [
+                "~~~~~~~~~~~~~~~~",
+                "~~~~~~~~~~~~~~~~",
+                "~~.........~~~~~",
+                "~~.........~~~~~",
+                "~~...~~.~~..~~~~",
+                "~~...~.....~~~~~",
+                "~~...~.....~~~~~",
+                "~~...~~.~~..~~~~",
+                "~~.........~~~~~",
+                "~~.........~~~~~",
+                "~~.........~~~~~",
+                "~~.........~~~~~",
+                "~~~.........~~~~",
+                "~~~~.......~~~~~",
+                "~~~~~~~~~~~~~~~~",
+                "~~~~~~~~~~~~~~~~",
+            ],
+        ]);
+    }
+    var _size = array_length(_cache)
+    return _cache[_index + _size % _size];
 }
 
-function _build_levels(_level_data){
-    var levels = [];
-    
-    for (var idx = 0; idx < array_length(_level_data); idx++) {
-        var rows = _level_data[idx];
-        var lh   = array_length(rows);
-        var lw   = string_length(rows[0]);
-        
-        var _grid = ds_grid_create(lw, lh);
-        
-        for (var j = 0; j < lh; j++) {
-            var row = rows[j];
-            for (var i = 0; i < lw; i++) {
-                var c = string_char_at(row, i + 1);
-                var val = _map_character(c);
-                ds_grid_set(_grid, i, j, val);
+function _build_levels(_level_data) {
+    var _count = array_length(_level_data);
+    var _levels = array_create(_count);
+
+    for (var _idx = 0; _idx < _count; _idx++) {
+        var _rows = _level_data[_idx];
+        var _lh   = array_length(_rows);
+        var _lw   = string_length(_rows[0]);
+
+        var _grid      = array_create(_lh);
+        var _tiles_idx = array_create(_lh);
+        var _decos_idx = array_create(_lh);
+
+        for (var _j = 0; _j < _lh; _j++) {
+            _grid[_j]      = array_create(_lw);
+            _tiles_idx[_j] = array_create(_lw);
+            _decos_idx[_j] = array_create(_lw);
+            
+            var _row_str = _rows[_j];
+            for (var _i = 0; _i < _lw; _i++) {
+                _grid[_j][_i] = _map_character(string_char_at(_row_str, _i + 1));
             }
         }
-        
-        var _tiles_idx = ds_grid_create(lw, lh);
-        ds_grid_copy(_tiles_idx, _grid);
-        
-        var _decos_idx = ds_grid_create(lw, lh);
-        
-        for (var j = lh - 1; j >= 0; j--) {
-            for (var i = lw - 1; i >= 0; i--) {
-                var value = ds_grid_get(_tiles_idx, i, j)
-                if value == 0 continue;
-                    
-                var deco = random_range(0, 1);
-                if deco > 0.95 {
-                    deco = choose(1, 2, 3);
-                    deco += (value - 1) * 3
-                } else deco = 0;
-                ds_grid_set(_decos_idx, i, j, deco);
-                    
-                ds_grid_set(_tiles_idx, i, j, _map_sprite_idx(ds_grid_get(_tiles_idx, i, j)));
-                    
-                if (j == 0) {
-                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 2);
-                } else if (value != ds_grid_get(_grid, i, j - 1)) {
-                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 2);
-                }
-                
-                if (i == 0) {
-                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 1);
-                } else if (value != ds_grid_get(_grid, i - 1, j)) {
-                    ds_grid_set(_tiles_idx, i, j, ds_grid_get(_tiles_idx, i, j) + 1);
+
+        for (var _j = 0; _j < _lh; _j++) {
+            for (var _i = 0; _i < _lw; _i++) {
+                var _val = _grid[_j][_i];
+                if (_val == 0) continue;
+
+                var _tile_val = _map_sprite_idx(_val);
+                if (_j == 0 || _grid[_j-1][_i] != _val) _tile_val += 2;
+                if (_i == 0 || _grid[_j][_i-1] != _val) _tile_val += 1;
+                _tiles_idx[_j][_i] = _tile_val;
+
+                if random(1) > 0.95 {
+                    _decos_idx[_j][_i] = choose(1, 2, 3) + (_val - 1) * 3;
                 }
             }
         }
-        
-        levels[idx] = { grid: _grid, tiles_idx: _tiles_idx, decos_idx: _decos_idx, width: lw, height: lh };
+
+        _levels[_idx] = {
+            grid: _grid,
+            tiles_idx: _tiles_idx,
+            decos_idx: _decos_idx,
+            width: _lw,
+            height: _lh
+        };
     }
-    
-    return levels
+
+    return _levels;
 }
 
 function _map_character(c) {
     switch (c) {
-        case "=": return 0;
         case ".": return 1;
         case "~": return 2;
         default:  return 0;
@@ -127,5 +123,5 @@ function _map_character(c) {
 }
 
 function _map_sprite_idx(n) {
-    return max((n - 1) * 4 + 1, 0)
+    return (n - 1) * 4 + 1;
 }
