@@ -5,13 +5,11 @@ v_buffer_solid = undefined;
 v_buffer_water = undefined;
 v_buffer_decos_wiggle = undefined;
 v_buffer_decos_static = undefined;
+v_dynamic = vertex_create_buffer();
 solid_exists = false;
 water_exists = false;
 decos_wiggle_exists = false;
 decos_static_exists = false;
-
-gpu_set_ztestenable(true);
-gpu_set_alphatestenable(true);
 
 vertex_format_begin();
 vertex_format_add_position_3d();
@@ -19,7 +17,7 @@ vertex_format_add_color();
 vertex_format_add_texcoord();
 v_format = vertex_format_end();
 
-function rebuild_mesh(_lvl) {
+function build_mesh(_lvl) {
     if (v_buffer_solid != undefined) vertex_delete_buffer(v_buffer_solid);
     if (v_buffer_water != undefined) vertex_delete_buffer(v_buffer_water);
     if (v_buffer_decos_static != undefined) vertex_delete_buffer(v_buffer_decos_static);
@@ -59,10 +57,10 @@ function rebuild_mesh(_lvl) {
             var _deco_id = _decos[_y][_x];
             if (_deco_id > 0) {
                 if _is_water {
-                    _add_tile_to_mesh(v_buffer_decos_static, _x, _y, _deco_id, spr_decos, 0.01);
+                    _add_tile_to_mesh(v_buffer_decos_static, _x, _y, _deco_id, spr_decos, 0.1);
                     _count_d_s++;
                 } else {
-                     _add_tile_to_mesh(v_buffer_decos_wiggle, _x, _y, _deco_id, spr_decos, 0.005);
+                     _add_tile_to_mesh(v_buffer_decos_wiggle, _x, _y, _deco_id, spr_decos, 0.1);
                     _count_d_w++;
                 }
             }

@@ -19,7 +19,7 @@ function load_level(_index) {
     }
 
     with (obj_map_renderer) {
-        rebuild_mesh(other.level_data);
+        build_mesh(other.level_data);
     }
 }
 

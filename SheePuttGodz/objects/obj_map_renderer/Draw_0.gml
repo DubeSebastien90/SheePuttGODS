@@ -1,5 +1,10 @@
 if (v_buffer_solid == undefined) exit;
     
+gpu_set_ztestenable(true);
+gpu_set_zwriteenable(true);
+gpu_set_alphatestenable(true);
+gpu_set_alphatestref(128);
+    
 var _tex = sprite_get_texture(spr_tiles, 0);
 
 if (solid_exists) vertex_submit(v_buffer_solid, pr_trianglelist, _tex);
@@ -23,3 +28,13 @@ if (decos_wiggle_exists) {
     vertex_submit(v_buffer_decos_wiggle, pr_trianglelist, _tex);
     shader_reset();
 }
+
+vertex_begin(v_dynamic, v_format);
+with (obj_mutton) event_perform(ev_draw, 0);
+vertex_end(v_dynamic);
+_tex = sprite_get_texture(spr_mutton, 0);
+vertex_submit(v_dynamic, pr_trianglelist, _tex);
+
+gpu_set_ztestenable(false);
+gpu_set_zwriteenable(false);
+gpu_set_alphatestenable(false);

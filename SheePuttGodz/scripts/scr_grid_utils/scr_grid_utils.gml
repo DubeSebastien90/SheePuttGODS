@@ -95,27 +95,39 @@ function is_walkable(gx, gy) {
     return global.current_level.grid[gy][gx] == 1;
 }
 
-function draw_iso_sprite(_spr, _subimg, _gx, _gy, _gz = 0, _z_offset = 0.01) {
-    var _pos = _draw_math(_gx, _gy, _z_offset, _gz);
-    draw_sprite(_spr, _subimg, _pos.x, _pos.y);
-    matrix_set(matrix_world, matrix_build_identity());
-}
-
-function draw_iso_sprite_ext(_spr, _subimg, _gx, _gy, _gz = 0, _xscale, _yscale, _rot, _color, _alpha, _z_offset = 0.015) {
-    var _pos = _draw_math(_gx, _gy, _z_offset, _gz);
-    draw_sprite_ext(_spr, _subimg, _pos.x, _pos.y, _xscale, _yscale, _rot, _color, _alpha);
-    matrix_set(matrix_world, matrix_build_identity());
-}
-
-function _draw_math(_gx, _gy, _z_offset, _gz) {
+function draw_iso_dynamic(_vbuf, _spr, _subimg, _gx, _gy, _gz = 0, _z_offset = 0.005) {
+    // 1. Base coordinates (No artificial offsets needed for floating-point coords)
     var _sx = grid_to_room_x(_gx, _gy);
-    var _sy = grid_to_room_y(_gx, _gy) - (_gz * global.tile_h);
-    var _z  = get_iso_z(_gx, _gy) - _z_offset;
+    var _sy = grid_to_room_y(_gx, _gy) - (_gz * global.tile_h * 2);
     
-    if (is_inbounds(floor(_gx), floor(_gy)) && is_water(floor(_gx), floor(_gy))) {
+    // 2. Sink into unwalkable tiles (Water)
+    if (is_inbounds(floor(_gx), floor(_gy)) && !is_walkable(floor(_gx), floor(_gy))) {
         _sy += global.tile_h;
     }
     
-    matrix_set(matrix_world, matrix_build(0, 0, _z, 0, 0, 0, 1, 1, 1));
-    return { x: _sx, y: _sy, z: _z };
+    // 3. Normal Z-depth
+    var _z = get_iso_z(_gx, _gy) - _z_offset;
+
+    // 4. Sprite Texture Data
+    var _uvs = sprite_get_uvs(_spr, _subimg);
+    var _x_off = sprite_get_xoffset(_spr);
+    var _y_off = sprite_get_yoffset(_spr);
+    
+    var _dw = sprite_get_width(_spr) * _uvs[6];
+    var _dh = sprite_get_height(_spr) * _uvs[7];
+
+    // 5. Screen Bounding Box
+    var _x1 = (_sx - _x_off) + _uvs[4];
+    var _y1 = (_sy - _y_off) + _uvs[5];
+    var _x2 = _x1 + _dw;
+    var _y2 = _y1 + _dh;
+
+    // 6. Write Triangles
+    vertex_position_3d(_vbuf, _x1, _y1, _z); vertex_color(_vbuf, c_white, 1); vertex_texcoord(_vbuf, _uvs[0], _uvs[1]);
+    vertex_position_3d(_vbuf, _x2, _y1, _z); vertex_color(_vbuf, c_white, 1); vertex_texcoord(_vbuf, _uvs[2], _uvs[1]);
+    vertex_position_3d(_vbuf, _x1, _y2, _z); vertex_color(_vbuf, c_white, 1); vertex_texcoord(_vbuf, _uvs[0], _uvs[3]);
+
+    vertex_position_3d(_vbuf, _x2, _y1, _z); vertex_color(_vbuf, c_white, 1); vertex_texcoord(_vbuf, _uvs[2], _uvs[1]);
+    vertex_position_3d(_vbuf, _x2, _y2, _z); vertex_color(_vbuf, c_white, 1); vertex_texcoord(_vbuf, _uvs[2], _uvs[3]);
+    vertex_position_3d(_vbuf, _x1, _y2, _z); vertex_color(_vbuf, c_white, 1); vertex_texcoord(_vbuf, _uvs[0], _uvs[3]);
 }
