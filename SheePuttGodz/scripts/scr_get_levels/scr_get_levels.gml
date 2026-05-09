@@ -59,14 +59,33 @@ function get_levels() {
     return level_data;
 }
 
-function get_level_conditions(level_index){
-	var conditions = [
-	{muttons_for_win: 1},
+
+conditions = [
+	{
+		muttons_for_win: 1,
+		muttons_total: 5,
+		first_star: 
+		{
+			collected: false,
+			description: "Bring all sheeps to the end"
+		},
+		second_star: 
+		{
+			collected: false,
+			description: "Finish the level in only 6 stomps"
+		},
+		third_star: 
+		{
+			collected: false,
+			description: "Stomp every sheep"
+		}
+	},
 	{muttons_for_win: 2},
 	{muttons_for_win: 1},
 ]
 
-return conditions[level_index]
+function get_level_conditions(level_index){
+	return conditions[level_index]
 }
 
 function _build_level(_level_data){
