@@ -40,11 +40,14 @@ switch (state) {
             var _ftx = _feet_tile.x;
             var _fty = _feet_tile.y;
             with (obj_mutton) {
-                var _mut_tile = obj_grid.room_pos_to_game_pos(x, y);
+                var _mut_tile = obj_grid.room_pos_to_game_pos(x, y+offset_origin);
                 var _ddx = _mut_tile.x - _ftx;
                 var _ddy = _mut_tile.y - _fty;
                 var _dist = sqrt(_ddx * _ddx + _ddy * _ddy);
-                if (_dist > 0 && _dist <= other.max_repulsion_dist) {
+				if _dist <= other.distStomp && z == 0 && on_land{
+					stomped()
+				} else if !mort{
+                if (_dist > 0 && _dist <= other.max_repulsion_dist) && on_land{
                     var _force = other.max_force_repulsion * (1 - _dist / other.max_repulsion_dist);
                     dx += (_ddx / _dist) * _force;
                     dy += (_ddy / _dist) * _force;
@@ -54,6 +57,7 @@ switch (state) {
 					}
 					scaredTime = scaredMaxTime
                 }
+				}
             }
 			
 			instance_create_layer(impact.x,impact.y,"dessous",obj_foot_print)

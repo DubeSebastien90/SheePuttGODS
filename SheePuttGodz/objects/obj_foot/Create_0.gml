@@ -18,6 +18,7 @@ clouds_speed = 0.45;
 max_force_repulsion = 0.08;
 max_jump_dist = 2
 max_repulsion_dist = 4
+distStomp = 0.7
 
 shockwave_active = false;
 shockwave_time = 0;
