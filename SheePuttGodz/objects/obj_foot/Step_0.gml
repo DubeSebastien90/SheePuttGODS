@@ -52,7 +52,9 @@ switch (state) {
                     in_air = true;
                 }
             }
-
+			
+			instance_create_layer(impact.x,impact.y,"dessous",obj_foot_print)
+			
             state = "stomping";
         }
     break;

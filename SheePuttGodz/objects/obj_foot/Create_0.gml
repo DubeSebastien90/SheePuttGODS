@@ -47,3 +47,5 @@ draw_wobbly_ring = function(cx, cy, radius, alpha) {
         );
     }
 };
+
+myOmbre = instance_create_layer(x,y,"dessus",obj_foot_ombre)
