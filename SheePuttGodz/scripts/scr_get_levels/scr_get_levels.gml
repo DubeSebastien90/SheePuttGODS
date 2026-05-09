@@ -1,5 +1,4 @@
-function get_levels() {
-    var level_data = [
+global.level_data = [
       [
           "~~~~~~~~~~~~~~~~",
           "~~~~~~~~~~~~~~~~",
@@ -55,12 +54,13 @@ function get_levels() {
           "~~~~~~~~~~~~~~~~",
       ],
     ];
-    
-    return level_data;
+
+function get_levels() {
+    return global.level_data;
 }
 
 
-conditions = [
+global.conditions = [
 	{
 		muttons_for_win: 1,
 		muttons_total: 5,
@@ -85,7 +85,7 @@ conditions = [
 ]
 
 function get_level_conditions(level_index){
-	return conditions[level_index]
+	return global.conditions[level_index]
 }
 
 function _build_level(_level_data){
