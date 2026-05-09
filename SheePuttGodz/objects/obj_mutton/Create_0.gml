@@ -18,6 +18,10 @@ collision_offset = 3
 
 canControl = false
 
+slowing = 0.001
+scaredTime = 0
+scaredMaxTime = 30
+
 function _try_move(dx, dy, dz) {
     var applied_dx = 0;
     var applied_dy = 0;
@@ -65,7 +69,6 @@ function _try_move(dx, dy, dz) {
     // Axe Z
     if (z + dz < 0) {
         applied_dz = -z;
-		in_air = false
     } else {
         applied_dz = dz;
     }

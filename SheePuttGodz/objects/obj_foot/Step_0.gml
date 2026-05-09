@@ -48,8 +48,11 @@ switch (state) {
                     var _force = other.max_force_repulsion * (1 - _dist / other.max_repulsion_dist);
                     dx += (_ddx / _dist) * _force;
                     dy += (_ddy / _dist) * _force;
-                    dz = jumpForce;
-                    in_air = true;
+					if _dist < other.max_jump_dist{
+						dz = jumpForce //* (1 - _dist / other.max_jump_dist);
+						in_air = true;
+					}
+					scaredTime = scaredMaxTime
                 }
             }
 			
