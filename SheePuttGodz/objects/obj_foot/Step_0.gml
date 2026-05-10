@@ -9,6 +9,7 @@ switch (state) {
             if (mouse_check_button_pressed(mb_left) && obj_level_manager.menuState == 0) {
                 impact.x = x;
                 impact.y = y;
+                impact_on_grid = obj_grid.room_pos_to_game_pos(impact.x, impact.y);
                 height_offset = start_height;
                 sprite_index = spr_foot;
                 image_index = 0;
@@ -25,7 +26,6 @@ switch (state) {
     case "descending":
         speed = min(speed + acceleration, max_speed);
         height_offset = max(0, height_offset - speed);
-
         if (height_offset == 0) {
             speed = 0;
             image_speed = 1;
@@ -33,10 +33,8 @@ switch (state) {
             clouds_active = true;
             shockwave_active = true;
             shockwave_time   = 0;
-
-            var _feet_tile = obj_grid.room_pos_to_game_pos(impact.x, impact.y);
-            var _ftx = _feet_tile.x;
-            var _fty = _feet_tile.y;
+            var _ftx = impact_on_grid.x;
+            var _fty = impact_on_grid.y;
             with (obj_mutton) {
                 var _mut_tile = obj_grid.room_pos_to_game_pos(x, y+offset_origin);
                 var _ddx = _mut_tile.x - _ftx;

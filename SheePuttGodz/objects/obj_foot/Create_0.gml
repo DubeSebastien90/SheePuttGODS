@@ -6,6 +6,7 @@ stomp_hold_max = 30;
 
 state = "marking"
 impact = { x: -1, y: -1 };
+impact_on_grid = { x: -1, y: -1 };
 spr_index = spr_marker;
 speed = 0;
 height_offset = 0;
