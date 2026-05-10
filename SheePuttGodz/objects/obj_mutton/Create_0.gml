@@ -51,12 +51,6 @@ function _try_move(dx, dy, dz) {
         applied_dx = dx;
         applied_dy = dy;
     } else {
-        var _can_enter = function(tx, ty) {
-            if (on_land  && obj_grid.is_walkable(tx, ty)) return true;
-            if (on_water && obj_grid.is_swimable(tx, ty)) return true;
-            return false;
-        };
-        
         var r = 0.4;
         
         // Axe X
@@ -123,7 +117,6 @@ function _try_move(dx, dy, dz) {
         if (push_x != 0) applied_dx += sign(push_x) * pushStrength;
         if (push_y != 0) applied_dy += sign(push_y) * pushStrength;
     }
-    
     // Axe Z
     if (z + dz < 0) {
         applied_dz = -z;

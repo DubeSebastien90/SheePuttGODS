@@ -66,6 +66,61 @@ if !footMovement{
 	}
 }
 
+var total_push_x = 0;
+var total_push_y = 0;
+var total_push_z = 0;
+var max_zn = 0;
+var hit_count = 0;
+
+//=============Bumper================
+with (obj_bumper) {
+    if (abs(tile_i - other.grid_x) > 2 || abs(tile_j - other.grid_y) > 2) continue;
+
+    var _dist_3d = point_distance_3d(tile_i, tile_j, 0, other.grid_x, other.grid_y, other.z);
+    var bumper_radius = 0.8;
+
+    if (_dist_3d < bumper_radius) {
+        _dist_3d = (_dist_3d == 0) ? 0.01 : _dist_3d;
+
+        var _xn = (other.grid_x - tile_i) / _dist_3d;
+        var _yn = (other.grid_y - tile_j) / _dist_3d;
+        var _zn = max(1, other.z / _dist_3d);
+
+        var overlap = bumper_radius - _dist_3d;
+
+        total_push_x += _xn * overlap;
+        total_push_y += _yn * overlap;
+        total_push_z += _zn * overlap;
+
+        max_zn = max(max_zn, _zn);
+        hit_count++;
+    }
+}
+
+if (hit_count > 0) {
+    grid_x += total_push_x;
+    grid_y += total_push_y;
+    z += total_push_z;
+
+    var push_screen = obj_grid._iso_vec_to_screen(total_push_x, total_push_y);
+    x += push_screen.x;
+    y += push_screen.y;
+
+    var combined_dist = point_distance(0, 0, total_push_x, total_push_y);
+    combined_dist = (combined_dist == 0) ? 0.01 : combined_dist;
+
+    var final_nx = total_push_x / combined_dist;
+    var final_ny = total_push_y / combined_dist;
+
+    var bounce_force = 0.05;
+
+    dx = final_nx * bounce_force;
+    dy = final_ny * bounce_force;
+    dz = max_zn * bounce_force;
+
+    in_air = true;
+}
+
 var collisions_d = (_try_move(dx, dy, dz))
 
 scaredTime -= 1
