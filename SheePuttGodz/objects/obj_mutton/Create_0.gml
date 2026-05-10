@@ -31,6 +31,10 @@ scaredMaxTime = 30
 rot = 0
 tempsRot = 0
 
+_spin_index = 0
+spin_speed = 0.4
+spin_side = 1
+
 myStandingPos = {x:0,y:0}
 dirStandingPos = {x:0,y:0}
 wanderingCooldownMax = 60

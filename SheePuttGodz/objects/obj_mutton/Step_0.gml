@@ -117,4 +117,7 @@ if !in_air{
 		tempsRot = 0
 		rot = lerp(rot,0,0.1)
 	}
+	_spin_index = 0
+} else {
+	_spin_index += spin_speed*spin_side
 }
