@@ -37,10 +37,10 @@ levels_raw = get_levels();
 
 global.cached_levels = [];
 
+
 for (var i = 0; i < array_length(levels_raw); i++) {
     global.cached_levels[i] = _build_level([levels_raw[i]]);
 }
-
 
 grid_origin_x = room_width  / 2;
 grid_origin_y = (room_height / 2) - (24 * tile_h); 
