@@ -9,3 +9,9 @@ if is_hovered(){
 	temps = 0
 }
 
+if show {
+	_alpha = lerp(_alpha,1,0.1)
+} else {
+	_alpha = lerp(_alpha,0,0.1)
+}
+

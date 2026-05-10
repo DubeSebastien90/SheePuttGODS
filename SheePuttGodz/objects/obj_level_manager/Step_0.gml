@@ -6,7 +6,15 @@ with(obj_mutton){
 }
 
 if nbMuttonArrived >= obj_grid.muttons_for_win{
-	obj_grid.change_level(obj_grid.level_index+1)
+	winCooldown -= 1
+	if winCooldown < 0{
+		canEnd = true
+	} else {
+		canEnd = false
+	}
+} else{
+	winCooldown = timeToWin	
+	canEnd = false
 }
 
 if keyboard_check_pressed(ord("0")){
@@ -15,4 +23,10 @@ if keyboard_check_pressed(ord("0")){
 
 if keyboard_check_pressed(ord("1")){
 	changeMenuState(1)
+}
+
+if canEnd {
+	win_button.show = true
+} else {
+	win_button.show = false
 }
