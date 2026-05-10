@@ -22,7 +22,9 @@ grid_x = grid_pos.x;
 grid_y = grid_pos.y;
 
 on_land  = obj_grid.is_walkable(floor(grid_x), floor(grid_y));
+
 on_water = obj_grid.is_swimable(floor(grid_x), floor(grid_y));
+
 
 if (press_jump && z <= 0 && on_land) && canControl{
     dz = jumpForce;
@@ -153,7 +155,16 @@ if (collisions_d.dz == 0 && dz < 0) {
 		}
 	}
     z = 0;
+	var prev_in_air = in_air
 	in_air = false
+	if (on_water && prev_in_air = true && in_air = false){
+		repeat(10){
+			with(instance_create_layer(x,y,"dessus",obj_part_water)){
+				draggedX = other.screen_d.x/2
+				draggedY = other.screen_d.y/2
+			}
+		}
+	}
 }
 
 x += screen_d.x
