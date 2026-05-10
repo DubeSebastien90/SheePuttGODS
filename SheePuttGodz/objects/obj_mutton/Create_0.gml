@@ -51,41 +51,79 @@ function _try_move(dx, dy, dz) {
         applied_dx = dx;
         applied_dy = dy;
     } else {
-    // Fonction locale : une tuile est-elle traversable selon mon mode actuel ?
-    var _can_enter = function(tx, ty) {
-        if (on_land  && obj_grid.is_walkable(tx, ty)) return true;
-        if (on_water && obj_grid.is_swimable(tx, ty)) return true;
-        return false;
-    };
-    
-    var r = 0.5;
-    
-    // Axe X
-    if (dx != 0) {
-        var test_x = grid_x + dx;
-        var edge_x = test_x + sign(dx) * r;
-        var corner_y_top = grid_y - r;
-        var corner_y_bot = grid_y + r;
+        var _can_enter = function(tx, ty) {
+            if (on_land  && obj_grid.is_walkable(tx, ty)) return true;
+            if (on_water && obj_grid.is_swimable(tx, ty)) return true;
+            return false;
+        };
         
-        if (_can_enter(floor(edge_x), floor(corner_y_top))
-         && _can_enter(floor(edge_x), floor(corner_y_bot))) {
-            applied_dx = dx;
+        var r = 0.4;
+        
+        // Axe X
+        if (dx != 0) {
+            var test_x = grid_x + dx;
+            var edge_x = test_x + sign(dx) * r;
+            var corner_y_top = grid_y - r;
+            var corner_y_bot = grid_y + r;
+            
+            if (_can_enter(floor(edge_x), floor(corner_y_top))
+             && _can_enter(floor(edge_x), floor(corner_y_bot))) {
+                applied_dx = dx;
+            }
         }
+        
+        // Axe Y
+        if (dy != 0) {
+            var test_y = grid_y + dy;
+            var edge_y = test_y + sign(dy) * r;
+            var corner_x_left  = grid_x - r;
+            var corner_x_right = grid_x + r;
+            
+            if (_can_enter(floor(corner_x_left),  floor(edge_y))
+             && _can_enter(floor(corner_x_right), floor(edge_y))) {
+                applied_dy = dy;
+            }
+        }
+        
+        // ----- BORDER PUSH -----
+        // After applying movement, check if any corner straddles the wrong tile type.
+        // If so, push gently back toward our home tile.
+        var _is_home = function(tx, ty) {
+            if (on_land)  return obj_grid.is_walkable(tx, ty);
+            if (on_water) return obj_grid.is_swimable(tx, ty);
+            return true;
+        };
+        
+        var pushStrength = 0.05; // tiles per step — tune to taste
+        
+        var nx = grid_x + applied_dx;
+        var ny = grid_y + applied_dy;
+        
+        // Sample the four corners of the collision box
+        var corners = [
+            {x: nx - r, y: ny - r, sx: -1, sy: -1}, // top-left
+            {x: nx + r, y: ny - r, sx:  1, sy: -1}, // top-right
+            {x: nx - r, y: ny + r, sx: -1, sy:  1}, // bot-left
+            {x: nx + r, y: ny + r, sx:  1, sy:  1}, // bot-right
+        ];
+        
+        var push_x = 0;
+        var push_y = 0;
+        
+        for (var i = 0; i < array_length(corners); i++) {
+            var c = corners[i];
+            if (!_is_home(floor(c.x), floor(c.y))) {
+                // this corner is on the wrong tile type — push away from it
+                push_x -= c.sx;
+                push_y -= c.sy;
+            }
+        }
+        
+        // Normalize and apply the push (so two corners on the same side don't double-push)
+        if (push_x != 0) applied_dx += sign(push_x) * pushStrength;
+        if (push_y != 0) applied_dy += sign(push_y) * pushStrength;
     }
     
-    // Axe Y
-    if (dy != 0) {
-        var test_y = grid_y + dy;
-        var edge_y = test_y + sign(dy) * r;
-        var corner_x_left  = grid_x - r;
-        var corner_x_right = grid_x + r;
-        
-        if (_can_enter(floor(corner_x_left),  floor(edge_y))
-         && _can_enter(floor(corner_x_right), floor(edge_y))) {
-            applied_dy = dy;
-        }
-    }
-	}
     // Axe Z
     if (z + dz < 0) {
         applied_dz = -z;
