@@ -30,7 +30,7 @@ if (press_jump && z <= 0 && on_land) && canControl{
 }
 
 //wandering
-if !footMovement{
+if !footMovement && !mort{
 	if wandering{
 		wanderingCooldown -= 1
 		if wanderingCooldown < 0{
@@ -109,6 +109,10 @@ if !mort{
 depth = -bbox_bottom
 }
 
+if screen_d.x != 0{
+	side = -sign(screen_d.x)
+}
+
 if !in_air{
 	if  collisions_d.dx !=0 ||  collisions_d.dy !=0{
 		tempsRot += 5 +(sqrt( collisions_d.dx* collisions_d.dx +  collisions_d.dy* collisions_d.dy)*50)
@@ -119,5 +123,7 @@ if !in_air{
 	}
 	_spin_index = 0
 } else {
-	_spin_index += spin_speed*spin_side
+	_spin_index += spin_speed
 }
+
+_side = lerp(_side,side,0.2)

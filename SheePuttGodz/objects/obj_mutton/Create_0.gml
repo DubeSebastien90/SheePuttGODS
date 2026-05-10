@@ -35,6 +35,9 @@ _spin_index = 0
 spin_speed = 0.4
 spin_side = 1
 
+side = choose(-1,1)
+_side = side
+
 myStandingPos = {x:0,y:0}
 dirStandingPos = {x:0,y:0}
 wanderingCooldownMax = 60
