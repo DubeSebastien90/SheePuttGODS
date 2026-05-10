@@ -44,6 +44,8 @@ for (var i = 0; i < array_length(levels_raw); i++) {
     global.cached_levels[i] = _build_level([levels_raw[i]]);
 }
 
+nbLevels = array_length(global.cached_levels)
+
 level_index = -1;
 
 muttons_for_win = 10
@@ -105,12 +107,18 @@ function is_swimable(tile_x, tile_y) {
 }
 
 function change_level(_level_index) {
+	if global.conditions[_level_index].unlocked == false{
+		return
+	}
+	
+	
     with(obj_mutton) instance_destroy();
     with(obj_end_gate) instance_destroy();
     with(obj_foot_print) instance_destroy();
     with(obj_bumper) instance_destroy();
     with(obj_foot) instance_destroy();
     with(obj_wolf) instance_destroy();
+	
     
     instance_create_layer(mouse_x, mouse_y, "Instances", obj_foot);
     muttons_for_win = get_level_conditions(_level_index).muttons_for_win;

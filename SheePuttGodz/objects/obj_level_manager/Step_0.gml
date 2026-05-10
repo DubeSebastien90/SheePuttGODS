@@ -25,8 +25,22 @@ if keyboard_check_pressed(ord("1")){
 	changeMenuState(1)
 }
 
-if canEnd {
+if canEnd && menuState == 0 {
 	win_button.show = true
 } else {
 	win_button.show = false
 }
+
+if obj_grid.level_index == 0{
+	prev_button.show = false
+} else if menuState== 1{
+	prev_button.show = true
+}
+
+if obj_grid.level_index == obj_grid.nbLevels - 1 || global.conditions[obj_grid.level_index+1].unlocked == false {
+	next_button.show = false
+} else if menuState == 1 && global.conditions[obj_grid.level_index+1].unlocked == true{
+	next_button.show = true
+}
+
+sliding = lerp(sliding, obj_grid.level_index, 0.15)
