@@ -43,7 +43,7 @@ for (var i = 0; i < array_length(levels_raw); i++) {
 
 
 grid_origin_x = room_width  / 2;
-grid_origin_y = (room_height / 2) - (array_length(levels_raw[0]) * tile_h); 
+grid_origin_y = (room_height / 2) - (24 * tile_h); 
 
 level_index = -1;
 
