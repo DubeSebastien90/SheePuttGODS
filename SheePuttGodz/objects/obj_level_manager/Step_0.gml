@@ -37,8 +37,8 @@ if obj_grid.level_index == 0{
 	prev_button.show = true
 }
 
-if obj_grid.level_index == obj_grid.nbLevels - 1{
+if obj_grid.level_index == obj_grid.nbLevels - 1 || global.conditions[obj_grid.level_index+1].unlocked == false {
 	next_button.show = false
-} else if menuState == 1 {
+} else if menuState == 1 && global.conditions[obj_grid.level_index+1].unlocked == true{
 	next_button.show = true
 }

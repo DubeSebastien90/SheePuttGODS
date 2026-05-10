@@ -16,5 +16,6 @@ function is_hovered(){
 }
 
 function on_clicked(){
+	global.conditions[obj_grid.level_index+1].unlocked = true
 	obj_level_manager.changeMenuState(1)
 }

@@ -4,6 +4,7 @@ restart_button = instance_create_layer(35,105,"dessus",obj_button_restart)
 restart_button._alpha = 0
 win_button = instance_create_layer(30*3 + 10,105,"dessus",obj_button_end)
 win_button._alpha = 0
+win_button.show = false
 menu_button = instance_create_layer(28*3 + 5,35,"dessus",obj_button_menu)
 menu_button._alpha = 0
 
@@ -11,7 +12,10 @@ menu_button._alpha = 0
 play_button = instance_create_layer(room_width/2,room_height*4/5,"dessus",obj_button_play)
 prev_button = instance_create_layer(room_width/2 - 220,room_height*4/5 + 20,"dessus",obj_button_prev)
 prev_button._alpha = 0
+prev_button.show = false
 next_button = instance_create_layer(room_width/2 + 220,room_height*4/5 + 20,"dessus",obj_button_next)
+next_button._alpha = 0
+next_button.show = false
 
 timeToWin = 30
 winCooldown = timeToWin
@@ -32,8 +36,6 @@ function changeMenuState(_state){
 		restart_button.show = false
 		menu_button.show = false
 		play_button.show = true
-		prev_button.show = true
-		next_button.show = true
 	}
 	
 	menuState = _state
