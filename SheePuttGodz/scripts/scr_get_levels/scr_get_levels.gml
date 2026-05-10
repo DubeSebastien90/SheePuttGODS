@@ -80,7 +80,7 @@ global.conditions = [
 			description: "Stomp every sheep"
 		}
 	},
-	{muttons_for_win: 2},
+	{muttons_for_win: 1},
 	{muttons_for_win: 1},
 ]
 
