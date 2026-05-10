@@ -1,4 +1,4 @@
-depth = -y;
+depth = -bbox_bottom;
 tile_i = 0;
 tile_j = 0;
 
