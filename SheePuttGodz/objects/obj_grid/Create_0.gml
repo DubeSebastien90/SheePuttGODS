@@ -106,6 +106,13 @@ function change_level(_level_index){
 	with(obj_foot_print){
 		instance_destroy()
 	}
+    with(obj_bumper){
+		instance_destroy()
+	}
+    with(obj_foot){
+        instance_destroy()
+    }
+    instance_create_layer(mouse_x, mouse_y, "Instances", obj_foot)
 	level_index = _level_index
 	muttons_for_win = get_level_conditions(_level_index).muttons_for_win
 	level = _build_level([levels[_level_index]]);

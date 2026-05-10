@@ -1,5 +1,5 @@
 global.level_data = [
-      [
+        [
           "~~~~~~~~~~~~~~~~",
           "~~~~~~~~~~~~~~~~",
           "~~~~.......~~~~~",
@@ -16,8 +16,8 @@ global.level_data = [
           "~~~~eeeeeee~~~~~",
           "~~~~~~~~~~~~~~~~",
           "~~~~~~~~~~~~~~~~",
-      ],
-      [
+        ],
+        [
           "~~~~~~~~~~~~~~~~",
           "~..........~~~~~",
           "~.mm.......~~~~~",
@@ -34,8 +34,8 @@ global.level_data = [
           "~~~~~~~~~~..ee.~",
           "~~~~~~~~~~.....~",
           "~~~~~~~~~~~~~~~~",
-      ],
-      [
+        ],
+        [
           "~~~~~~~~~~~~~~~~",
           "~~~~~~~~~~~~~~~~",
           "~~.........~~~~~",
@@ -45,14 +45,50 @@ global.level_data = [
           "~~...~eeeee~~~~~",
           "~~...~~.~~..~~~~",
           "~~.........~~~~~",
-          "~~.........~~~~~",
+          "~~...bbb...~~~~~",
           "~~.........~~~~~",
           "~~.....m...~~~~~",
           "~~~...m.m...~~~~",
           "~~~~.......~~~~~",
           "~~~~~~~~~~~~~~~~",
           "~~~~~~~~~~~~~~~~",
-      ],
+        ], 
+        [
+         "~~~~~~~~~~~~~~~~",
+         "~~~~~~~~~~~~~~~~",
+         "~~~~........~~~~",
+         "~~~~........~~~~",
+         "~~~~........~~~~",
+         "~~~~........~~~~",
+         "~~~~...~~...~~~~",
+         "~~~~..bbbb..~~~~",
+         "~~~~..bbbb..~~~~",
+         "~~....bbbb....~~",
+         "~~.m..bbbb..m.~~",
+         "~~............~~",
+         "~~~~........~~~~",
+         "~~~~........~~~~",
+         "~~~~~~~~~~~~~~~~",
+         "~~~~~~~~~~~~~~~~",
+        ],
+        [
+        "bbbbbbbbbbbbbbbb",
+        "b..b.........b.b",
+        "b..b........bbbb",
+        "bbbb........bb.b",
+        "b....bb..bb....b",
+        "b....bb..bb....b",
+        "b.....m..m.....b",
+        "b..............b",
+        "b.....m..m.....b",
+        "b..............b",
+        "b....bb...b....b",
+        "b....bb..b.b...b",
+        "b.bb......b.bb.b",
+        "b.bb........bb.b",
+        "b..............b",
+        "bbbbbbbbbbbbbbbb",
+        ]
     ];
 
 function get_levels() {
@@ -77,10 +113,12 @@ global.conditions = [
 		third_star: 
 		{
 			collected: false,
-			description: "Stomp every sheep"
+			description: "Finish in under [time_blank]"
 		}
 	},
 	{muttons_for_win: 2},
+	{muttons_for_win: 1},
+	{muttons_for_win: 1},
 	{muttons_for_win: 1},
 ]
 
@@ -108,7 +146,7 @@ function _build_level(_level_data){
 					var mutton_pos = obj_grid.game_pos_to_room_pos(i,j)
 					instance_create_layer(mutton_pos.x,mutton_pos.y,"Instances",obj_mutton)
 				}
-				if c = "e"{
+				else if c = "e"{
 					val = 1
 					var end_gate_pos = obj_grid.game_pos_to_room_pos(i,j)
 					with(instance_create_layer(end_gate_pos.x,end_gate_pos.y,"dessous",obj_end_gate)){
@@ -116,6 +154,14 @@ function _build_level(_level_data){
 						tile_j = j
 					}
 				}
+                else if c = "b"{
+                    val = 1
+					var bumper_pos = obj_grid.game_pos_to_room_pos(i-1,j-1)
+					with(instance_create_layer(bumper_pos.x,bumper_pos.y,"dessous",obj_bumper)){
+						tile_i = i
+						tile_j = j
+					}
+                }
                 ds_grid_set(_grid, i, j, val);
             }
         }
@@ -186,3 +232,4 @@ function _map_character(c) {
 function _map_sprite_idx(n) {
     return max((n - 1) * 4 + 1, 0)
 }
+
