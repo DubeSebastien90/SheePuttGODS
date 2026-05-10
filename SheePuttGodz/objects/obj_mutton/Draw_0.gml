@@ -9,4 +9,3 @@ if !on_water || in_air{
 }
 
 draw_sprite_ext(sprite_index, _index, x, y + _offset - (z * 2),1,1,rot,c_white,1);
-

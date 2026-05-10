@@ -53,6 +53,7 @@ switch (state) {
 					if _dist < other.max_jump_dist{
 						dz = jumpForce //* (1 - _dist / other.max_jump_dist);
 						in_air = true;
+						spin_side = 1
 					}
 					scaredTime = scaredMaxTime
                 }

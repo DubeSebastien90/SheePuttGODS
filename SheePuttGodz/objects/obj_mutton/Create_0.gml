@@ -31,6 +31,10 @@ scaredMaxTime = 30
 rot = 0
 tempsRot = 0
 
+_spin_index = 0
+spin_speed = 0.4
+spin_side = 1
+
 myStandingPos = {x:0,y:0}
 dirStandingPos = {x:0,y:0}
 wanderingCooldownMax = 60
@@ -51,6 +55,12 @@ function _try_move(dx, dy, dz) {
         applied_dx = dx;
         applied_dy = dy;
     } else {
+        var _can_enter = function(tx, ty) {
+            if (on_land  && obj_grid.is_walkable(tx, ty)) return true;
+            if (on_water && obj_grid.is_swimable(tx, ty)) return true;
+            return false;
+        };
+        
         var r = 0.4;
         
         // Axe X
