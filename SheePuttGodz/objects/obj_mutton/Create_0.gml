@@ -145,10 +145,13 @@ function _try_move(dx, dy, dz) {
 mort = false
 
 function stomped(){
+	if mort = false{
 	mort = true
 	dx = 0
 	dy = 0
 	depth = 199
+	obj_son.play_sound(snd_squish,0.1)
+	}
 }
 
 function isInWinnableTile(){

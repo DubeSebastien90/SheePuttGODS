@@ -28,6 +28,7 @@ switch (state) {
         speed = min(speed + acceleration, max_speed);
         height_offset = max(0, height_offset - speed);
         if (height_offset == 0) {
+			obj_son.play_sound(choose(snd_footstomp,snd_footstomp2),0.2)
             speed = 0;
             image_speed = 1;
             screenShake(3,30);
