@@ -44,6 +44,8 @@ for (var i = 0; i < array_length(levels_raw); i++) {
     global.cached_levels[i] = _build_level([levels_raw[i]]);
 }
 
+nbLevels = array_length(global.cached_levels)
+
 level_index = -1;
 
 muttons_for_win = 10

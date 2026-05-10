@@ -97,7 +97,8 @@ function get_levels() {
 
 global.conditions = [
 	{
-		muttons_for_win: 1,
+		level_title: "custom level name",
+		muttons_for_win: 3,
 		muttons_total: 5,
 		first_star: 
 		{
@@ -107,18 +108,41 @@ global.conditions = [
 		second_star: 
 		{
 			collected: false,
-			description: "Finish the level in only 6 stomps"
+			description: "Finish the level in only 6 stomps",
+			nbStomps: 6
 		},
 		third_star: 
 		{
 			collected: false,
-			description: "Finish in under [time_blank]"
+			description: "Finish in under 10 seconds",
+			nbSeconds: 10
 		}
 	},
-	{muttons_for_win: 1},
-	{muttons_for_win: 1},
-	{muttons_for_win: 1},
-	{muttons_for_win: 1},
+	{
+		level_title: "custom level name",
+		muttons_for_win: 2,
+		muttons_total: 4,
+		first_star: 
+		{
+			collected: false,
+			description: "Bring all sheeps to the end"
+		},
+		second_star: 
+		{
+			collected: false,
+			description: "Finish the level in only 6 stomps",
+			nbStomps: 6
+		},
+		third_star: 
+		{
+			collected: false,
+			description: "Finish in under 10 seconds",
+			nbSeconds: 10
+		}
+	},
+	{level_title: "custom level name", muttons_for_win: 1},
+	{level_title: "custom level name", muttons_for_win: 1},
+	{level_title: "custom level name", muttons_for_win: 1},
 ]
 
 function get_level_conditions(level_index){

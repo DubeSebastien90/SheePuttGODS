@@ -16,7 +16,7 @@ life = random_range(30,60)
 angle_speed = random_range(1,3)
 angle_side = choose(-1,1)
 
-depth += 10
+depth += 100
 
 draggedX = 0
 draggedY = 0
