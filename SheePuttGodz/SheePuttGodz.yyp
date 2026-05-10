@@ -54,6 +54,7 @@
     {"id":{"name":"spr_foot","path":"sprites/spr_foot/spr_foot.yy",},},
     {"id":{"name":"spr_footprint","path":"sprites/spr_footprint/spr_footprint.yy",},},
     {"id":{"name":"spr_marker","path":"sprites/spr_marker/spr_marker.yy",},},
+    {"id":{"name":"spr_mutton_air","path":"sprites/spr_mutton_air/spr_mutton_air.yy",},},
     {"id":{"name":"spr_mutton","path":"sprites/spr_mutton/spr_mutton.yy",},},
     {"id":{"name":"spr_palette","path":"sprites/spr_palette/spr_palette.yy",},},
     {"id":{"name":"spr_shockwave","path":"sprites/spr_shockwave/spr_shockwave.yy",},},

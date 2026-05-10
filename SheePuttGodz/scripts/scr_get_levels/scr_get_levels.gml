@@ -13,8 +13,8 @@ global.level_data = [
           "~~~~~...........~~~~~~~~",
           "~~~~~~~~~~~~~~~~~~~~~~~~",
           "~~~~~...........~~~~~~~~",
-          "~~~~~...........~~~~~~~~",
-          "~~~~~...........~~~~~~~~",
+          "~~~~~...eee.....~~~~~~~~",
+          "~~~~~..ee...e...~~~~~~~~",
           "~~~~~...........~~~~~~~~",
           "~~~~~~~eeeeeeeee~~~~~~~~",
           "~~~~~~~~eeeeeee~~~~~~~~~",
@@ -119,8 +119,10 @@ function _build_level(_level_data){
         var lh   = array_length(rows);
         var lw   = string_length(rows[0]);
         
-        var _grid = ds_grid_create(lw, lh);
-        
+        var _grid      = ds_grid_create(lw, lh);
+        var _gate_grid = ds_grid_create(lw, lh);
+        ds_grid_clear(_gate_grid, false);
+
         for (var j = 0; j < lh; j++) {
             var row = rows[j];
             for (var i = 0; i < lw; i++) {
@@ -133,6 +135,7 @@ function _build_level(_level_data){
 				}
 				if c = "e"{
 					val = 1
+					ds_grid_set(_gate_grid, i, j, true);
 					var end_gate_pos = obj_grid.game_pos_to_room_pos(i,j)
 					with(instance_create_layer(end_gate_pos.x,end_gate_pos.y,"dessous",obj_end_gate)){
 						tile_i = i
@@ -142,6 +145,17 @@ function _build_level(_level_data){
                 ds_grid_set(_grid, i, j, val);
             }
         }
+
+        with (obj_end_gate) {
+            var gi = tile_i;
+            var gj = tile_j;
+            var _n = (gj > 0)      && ds_grid_get(_gate_grid, gi,   gj-1);
+            var _e = (gi < lw-1)   && ds_grid_get(_gate_grid, gi+1, gj);
+            var _s = (gj < lh-1)   && ds_grid_get(_gate_grid, gi,   gj+1);
+            var _w = (gi > 0)      && ds_grid_get(_gate_grid, gi-1, gj);
+            image_index = _gate_sprite_idx(_n, _e, _s, _w);
+        }
+        ds_grid_destroy(_gate_grid);
         
         var _tiles = ds_grid_create(lw, lh);
         var _decos_s = ds_grid_create(lw, lh);
@@ -208,4 +222,32 @@ function _map_character(c) {
 
 function _map_sprite_idx(n) {
     return max((n - 1) * 4 + 1, 0)
+}
+
+function _gate_sprite_idx(n, e, s, w) {
+    // N=1 (upper-right), E=2 (lower-right), S=4 (lower-left), W=8 (upper-left)
+    var mask = (n ? 1 : 0) | (e ? 2 : 0) | (s ? 4 : 0) | (w ? 8 : 0);
+    switch (mask) {
+        case 0:  return 0;   // isolated
+        case 15: return 1;   // all sides
+        // Corners (2 adjacent connections)
+        case 6:  return 2;   // E+S   → top corner
+        case 3:  return 3;   // N+E   → left corner
+        case 9:  return 4;   // N+W   → bottom corner
+        case 12: return 5;   // S+W   → right corner
+        // Edges (3 connections, 1 open side)
+        case 7:  return 6;   // N+E+S → top-left edge    (W open)
+        case 14: return 7;   // E+S+W → top-right edge   (N open)
+        case 11: return 8;   // N+E+W → bottom-left edge (S open)
+        case 13: return 9;   // N+S+W → bottom-right edge (E open)
+        // Corridors (2 opposite connections)
+        case 5:  return 10;  // N+S   → corridor lower-left ↔ upper-right
+        case 10: return 11;  // E+W   → corridor upper-left ↔ lower-right
+        // Endpoints (1 connection only)
+        case 4:  return 12;  // S only → lower-left
+        case 8:  return 13;  // W only → upper-left
+        case 1:  return 14;  // N only → upper-right
+        case 2:  return 15;  // E only → lower-right
+        default: return 1;   // fallback
+    }
 }
