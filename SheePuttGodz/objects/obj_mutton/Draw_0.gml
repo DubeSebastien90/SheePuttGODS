@@ -18,3 +18,7 @@ if !in_air{
 	draw_sprite_ext(spr_mutton_air, _spin_index%12, x, y + _offset - (z * 2),spin_side,1,rot,c_white,1);
 }
 
+//draw_text_transformed(x,y,myStandingPos,0.4,0.4,0)
+//draw_text_transformed(x,y+5,dirStandingPos,0.4,0.4,0)
+//draw_text_transformed(x,y+10,string(grid_x)+", "+string(grid_y)+", " + string(result),0.4,0.4,0)
+

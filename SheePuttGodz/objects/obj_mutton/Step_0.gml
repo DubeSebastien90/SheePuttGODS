@@ -47,13 +47,12 @@ if !footMovement && !mort{
 			wanderingCooldown = wanderingCooldownMax + random_range(-30,30)
 			wandering = true
 			dirStandingPos = {
-				x: myStandingPos.x + random_range(-tileWanderingDistMax,tileWanderingDistMax), 
-				y: myStandingPos.y + random_range(-tileWanderingDistMax,tileWanderingDistMax)
+				x: myStandingPos.x + random(tileWanderingDistMax * 2) - tileWanderingDistMax,
+				y: myStandingPos.y + random(tileWanderingDistMax * 2) - tileWanderingDistMax,
 			}
+			var _dist = sqrt(sqr(myStandingPos.x - dirStandingPos.x) + sqr(myStandingPos.y - dirStandingPos.y))
+			spdWander = _dist / wanderingCooldown
 		}
-		
-		var _dist = sqrt(sqr(grid_x - dirStandingPos.x) + sqr(grid_y - dirStandingPos.y))
-		spdWander = _dist / wanderingCooldown
 	}
 } else if footMovement{
 	if scaredTime < 0 {

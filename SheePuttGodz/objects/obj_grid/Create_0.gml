@@ -1,4 +1,4 @@
-randomize()
+random_set_seed(current_time + get_timer())
 
 tile_w = sprite_get_width(spr_tile) / 2;
 tile_h = sprite_get_height(spr_tile) / 4;
@@ -36,7 +36,7 @@ levels = get_levels()
 
 
 grid_origin_x = room_width  / 2;
-grid_origin_y = (room_height / 2) - (24 * tile_h); //todo remplacer 16 par level heit
+grid_origin_y = (room_height / 2) - (array_length(levels[0]) * tile_h); //todo remplacer 16 par level heit
 
 muttons_for_win = 10
 change_level(0)

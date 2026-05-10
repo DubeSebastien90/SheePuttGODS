@@ -49,6 +49,8 @@ wandering = false
 spdWander = 0
 footMovement = true
 
+result = 0
+
 function _try_move(dx, dy, dz) {
     var applied_dx = 0;
     var applied_dy = 0;
