@@ -1,5 +1,4 @@
 if menuState != 0{
-	draw_set_font(fnt_pixel)
 	
 	var _idx = obj_grid.level_index
 	var _total = array_length(global.conditions)

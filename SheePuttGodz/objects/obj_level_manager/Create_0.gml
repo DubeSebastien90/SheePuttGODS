@@ -51,14 +51,15 @@ function draw_mini_level(_level_index, _xPos, _yPos) {
 	var _cond = global.conditions[_level_index]
 	
 	// Title centered on top
+	draw_set_font(fnt_pixel)
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_top)
 	draw_set_color(c_white)
-	draw_text(_xPos, _yPos, _cond.level_title)
+	draw_text_transformed(_xPos, _yPos-20, _cond.level_title,2,2,0)
 	
 	// Stars centered underneath
 	var _star_spacing = sprite_get_width(spr_star) + 4
-	var _star_y = _yPos + string_height(_cond.level_title) + 4
+	var _star_y = _yPos + string_height(_cond.level_title) + 20
 	var _star_start_x = _xPos - _star_spacing
 	
 	var _stars = [_cond.first_star, _cond.second_star, _cond.third_star]
@@ -77,18 +78,22 @@ function draw_detailed_level(_level_index, _xPos, _yPos) {
 	var _cond = global.conditions[_level_index]
 	
 	// Title centered on top
+	draw_set_font(fnt_pixel)
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_top)
 	draw_set_color(c_white)
-	draw_text(_xPos, _yPos, _cond.level_title)
+	draw_text_transformed(_xPos, _yPos-20, _cond.level_title,2,2,0)
 	
 	// Stars listed below with descriptions
 	draw_set_halign(fa_left)
 	draw_set_valign(fa_middle)
 	
+	var _left_spacing = 150
+	var _list_x = _xPos - _left_spacing
+	
 	var _star_size = sprite_get_height(spr_star)
 	var _line_height = max(_star_size, string_height("A")) + 6
-	var _list_start_y = _yPos + string_height(_cond.level_title) + 10
+	var _list_start_y = _yPos + string_height(_cond.level_title) + 20
 	
 	var _stars = [_cond.first_star, _cond.second_star, _cond.third_star]
 	for (var i = 0; i < 3; i++) {
@@ -99,10 +104,10 @@ function draw_detailed_level(_level_index, _xPos, _yPos) {
 		var _frame = _star.collected ? 1 : 0
 		
 		// Star icon on the left
-		draw_sprite(spr_star, _frame, _xPos, _line_y)
+		draw_sprite(spr_star, _frame, _list_x, _line_y)
 		
 		// Description text to the right of the star
-		draw_text(_xPos + _star_size + 6, _line_y, _star.description)
+		draw_text(_list_x + _star_size + 6, _line_y, _star.description)
 	}
 	
 	// Reset alignment
