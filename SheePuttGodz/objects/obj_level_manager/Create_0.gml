@@ -45,6 +45,8 @@ changeMenuState(1)
 
 sliding = 0
 
+levelFinished = -1
+
 function draw_mini_level(_level_index, _xPos, _yPos) {
 	var _cond = global.conditions[_level_index]
 	
@@ -106,4 +108,15 @@ function draw_detailed_level(_level_index, _xPos, _yPos) {
 	// Reset alignment
 	draw_set_halign(fa_left)
 	draw_set_valign(fa_top)
+}
+
+isAnimating = false
+frame = 0
+maxFrames = 12
+
+function startAnimation(){
+	if !isAnimating{
+		isAnimating = true
+		frame = 0
+	}
 }

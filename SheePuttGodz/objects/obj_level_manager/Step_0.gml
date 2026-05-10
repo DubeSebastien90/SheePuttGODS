@@ -1,8 +1,13 @@
+var _prevArrived = nbMuttonArrived
 nbMuttonArrived = 0
 with(obj_mutton){
 	if isInWinnableTile(){
 		other.nbMuttonArrived += 1
 	}
+}
+
+if _prevArrived < nbMuttonArrived{
+	startAnimation()
 }
 
 if nbMuttonArrived >= obj_grid.muttons_for_win{
@@ -41,6 +46,13 @@ if obj_grid.level_index == obj_grid.nbLevels - 1 || global.conditions[obj_grid.l
 	next_button.show = false
 } else if menuState == 1 && global.conditions[obj_grid.level_index+1].unlocked == true{
 	next_button.show = true
+}
+
+if isAnimating{
+	frame += obj_mutton.spin_speed
+	if frame > maxFrames{
+		isAnimating = false
+	}
 }
 
 sliding = lerp(sliding, obj_grid.level_index, 0.15)
