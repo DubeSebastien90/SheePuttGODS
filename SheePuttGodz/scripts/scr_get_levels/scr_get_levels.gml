@@ -1,7 +1,7 @@
 global.level_data = [
         [
           "~~~~~~~~~~~~~~~~",
-          "~~~~~~~~~~~~~~~~",
+          "~~~~~~~~~~~~~ww~",
           "~~~~.......~~~~~",
           "~~~...m.m...~~~~",
           "~~.....m.....~~~",
@@ -154,6 +154,16 @@ function _build_level(_level_data){
 					with(instance_create_layer(end_gate_pos.x,end_gate_pos.y,"dessous",obj_end_gate)){
 						tile_i = i
 						tile_j = j
+					}
+				}
+				else if c = "w"{
+					val = 2
+					ds_grid_set(_gate_grid, i, j, true);
+					var end_gate_pos = obj_grid.game_pos_to_room_pos(i,j)
+					with(instance_create_layer(end_gate_pos.x,end_gate_pos.y,"dessous",obj_end_gate)){
+						tile_i = i
+						tile_j = j
+						y += 4
 					}
 				}
                 else if c = "b"{
