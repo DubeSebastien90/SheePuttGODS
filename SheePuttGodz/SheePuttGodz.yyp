@@ -26,6 +26,7 @@
   },
   "name":"SheePuttGodz",
   "resources":[
+    {"id":{"name":"obj_bumper","path":"objects/obj_bumper/obj_bumper.yy",},},
     {"id":{"name":"obj_button_end","path":"objects/obj_button_end/obj_button_end.yy",},},
     {"id":{"name":"obj_button_menu","path":"objects/obj_button_menu/obj_button_menu.yy",},},
     {"id":{"name":"obj_button_restart","path":"objects/obj_button_restart/obj_button_restart.yy",},},
@@ -45,6 +46,7 @@
     {"id":{"name":"scr_screenShake","path":"scripts/scr_screenShake/scr_screenShake.yy",},},
     {"id":{"name":"shd_wave","path":"shaders/shd_wave/shd_wave.yy",},},
     {"id":{"name":"shd_wiggle","path":"shaders/shd_wiggle/shd_wiggle.yy",},},
+    {"id":{"name":"spr_bumper","path":"sprites/spr_bumper/spr_bumper.yy",},},
     {"id":{"name":"spr_button_end","path":"sprites/spr_button_end/spr_button_end.yy",},},
     {"id":{"name":"spr_button_menu","path":"sprites/spr_button_menu/spr_button_menu.yy",},},
     {"id":{"name":"spr_button_restart","path":"sprites/spr_button_restart/spr_button_restart.yy",},},

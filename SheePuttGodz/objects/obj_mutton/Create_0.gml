@@ -130,7 +130,6 @@ function _try_move(dx, dy, dz) {
         if (push_x != 0) applied_dx += sign(push_x) * pushStrength;
         if (push_y != 0) applied_dy += sign(push_y) * pushStrength;
     }
-    
     // Axe Z
     if (z + dz < 0) {
         applied_dz = -z;

@@ -9,8 +9,6 @@ switch (state) {
             if (mouse_check_button_pressed(mb_left) && obj_level_manager.menuState == 0) {
                 impact.x = x;
                 impact.y = y;
-                show_debug_message(impact)
-				show_debug_message(game_pos)
                 height_offset = start_height;
                 sprite_index = spr_foot;
                 image_index = 0;
