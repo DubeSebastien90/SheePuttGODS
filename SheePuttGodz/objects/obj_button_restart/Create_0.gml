@@ -17,4 +17,5 @@ function is_hovered(){
 
 function on_clicked(){
 	obj_grid.change_level(obj_grid.level_index)
+	obj_star_manager.resetMetrics()
 }

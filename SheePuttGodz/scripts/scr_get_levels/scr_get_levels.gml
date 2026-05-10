@@ -115,8 +115,8 @@ global.conditions = [
 		third_star: 
 		{
 			collected: false,
-			description: "Finish in under 10 seconds",
-			nbSeconds: 10
+			description: "Finish in under 15 seconds",
+			nbSeconds: 15
 		}
 	},
 	{

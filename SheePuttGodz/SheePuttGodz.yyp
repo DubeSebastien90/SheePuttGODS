@@ -46,6 +46,7 @@
     {"id":{"name":"obj_level_manager","path":"objects/obj_level_manager/obj_level_manager.yy",},},
     {"id":{"name":"obj_mutton","path":"objects/obj_mutton/obj_mutton.yy",},},
     {"id":{"name":"obj_part_water","path":"objects/obj_part_water/obj_part_water.yy",},},
+    {"id":{"name":"obj_star_manager","path":"objects/obj_star_manager/obj_star_manager.yy",},},
     {"id":{"name":"obj_wolf","path":"objects/obj_wolf/obj_wolf.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"scr_get_levels","path":"scripts/scr_get_levels/scr_get_levels.yy",},},

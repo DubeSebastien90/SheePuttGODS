@@ -16,6 +16,7 @@ switch (state) {
                 image_speed = 0;
                 clouds_spr_idx = 0;
                 state = "descending";
+				obj_star_manager.nbStomps += 1
             }
         } else {
             x = -1;

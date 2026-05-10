@@ -2,7 +2,7 @@ if menuState != 0{
 	
 	var _idx = obj_grid.level_index
 	var _total = array_length(global.conditions)
-	var _spacing = 500
+	var _spacing = 400
 	var _cx = room_width / 2
 	var _cy = room_height / 2
 	
@@ -18,13 +18,17 @@ if menuState != 0{
 	var _detailed_offset = (_idx - sliding) * _spacing
 	draw_detailed_level(_idx, _cx + _detailed_offset, _cy)
 } else {
-	draw_sprite_ext(spr_mutton,7,30,160,3,3,0,c_white,1)
+	draw_sprite_ext(spr_mutton,7,30,165,3,3,0,c_white,1)
 	if isAnimating{
-		draw_sprite_ext(spr_mutton_air,frame,30,162,3,3,0,c_white,1)
+		draw_sprite_ext(spr_mutton_air,frame,30,167,3,3,0,c_white,1)
 	}else{
-		draw_sprite_ext(spr_mutton,0,30,162,3,3,0,c_white,1)
+		draw_sprite_ext(spr_mutton,0,30,167,3,3,0,c_white,1)
 	}
 	draw_set_halign(fa_left)
 	draw_set_valign(fa_center)
-	draw_text_transformed(65,160,string(nbMuttonArrived)+"/"+string(global.conditions[obj_grid.level_index].muttons_for_win ),1,1,0)
+	draw_text_transformed(65,165,string(nbMuttonArrived)+"/"+string(global.conditions[obj_grid.level_index].muttons_for_win ),1,1,0)
+	
+	var _tenths = floor((obj_star_manager.timer mod 1) * 10)
+	var _secs = floor(obj_star_manager.timer mod 60)
+	draw_text_transformed(5,200,"Timer: " + string(_secs) + "." + string(_tenths),1,1,0)
 }

@@ -17,4 +17,5 @@ function is_hovered(){
 
 function on_clicked(){
 	obj_level_manager.changeMenuState(0)
+	obj_star_manager.resetMetrics()
 }
