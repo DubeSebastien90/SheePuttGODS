@@ -43,6 +43,8 @@ function changeMenuState(_state){
 
 changeMenuState(1)
 
+sliding = 0
+
 function draw_mini_level(_level_index, _xPos, _yPos) {
 	var _cond = global.conditions[_level_index]
 	

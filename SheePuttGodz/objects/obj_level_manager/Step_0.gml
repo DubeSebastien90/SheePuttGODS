@@ -42,3 +42,5 @@ if obj_grid.level_index == obj_grid.nbLevels - 1 || global.conditions[obj_grid.l
 } else if menuState == 1 && global.conditions[obj_grid.level_index+1].unlocked == true{
 	next_button.show = true
 }
+
+sliding = lerp(sliding, obj_grid.level_index, 0.15)
