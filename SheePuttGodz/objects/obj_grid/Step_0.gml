@@ -4,13 +4,11 @@ if keyboard_check_pressed(vk_tab) {
 
 if debug_mode {
     if keyboard_check_pressed(vk_right) {
-        level_index = (level_index + 1) mod array_length(levels);
-		change_level(level_index)
+		change_level((level_index + 1) mod array_length(levels))
     }
     
     if keyboard_check_pressed(vk_left) {
-        level_index = (level_index - 1 + array_length(levels)) mod array_length(levels);
-        change_level(level_index)
+        change_level((level_index - 1 + array_length(levels)) mod array_length(levels))
     }
 
     if keyboard_check_pressed(ord("R")){

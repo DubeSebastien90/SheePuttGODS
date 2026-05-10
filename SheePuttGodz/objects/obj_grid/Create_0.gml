@@ -31,7 +31,7 @@ function game_pos_to_room_pos(game_x, game_y) {
 }
 
 
-level_index = 0
+level_index = -1
 levels = get_levels()
 
 
@@ -113,9 +113,21 @@ function change_level(_level_index){
         instance_destroy()
     }
     instance_create_layer(mouse_x, mouse_y, "Instances", obj_foot)
-	level_index = _level_index
 	muttons_for_win = get_level_conditions(_level_index).muttons_for_win
+	
+	var _decoS =noone
+	var _decoD = noone
+	if(level_index == _level_index){
+		_decoS = level.decos_s
+		_decoD = level.decos_d
+	}
+	
 	level = _build_level([levels[_level_index]]);
+	if(level_index == _level_index){
+		level.decos_s = _decoS
+		level.decos_d = _decoD
+	}
+	level_index = _level_index
 }
 
 wiggle_time = shader_get_uniform(shd_wiggle, "u_time");
