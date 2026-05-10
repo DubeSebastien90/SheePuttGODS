@@ -36,7 +36,7 @@ levels = get_levels()
 
 
 grid_origin_x = room_width  / 2;
-grid_origin_y = (room_height / 2) - (16 * tile_h); //todo remplacer 16 par level heit
+grid_origin_y = (room_height / 2) - (24 * tile_h); //todo remplacer 16 par level heit
 
 muttons_for_win = 10
 change_level(0)

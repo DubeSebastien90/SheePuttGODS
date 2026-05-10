@@ -44,7 +44,7 @@ function _try_move(dx, dy, dz) {
         return false;
     };
     
-    var r = 0.2;
+    var r = 0.5;
     
     // Axe X
     if (dx != 0) {
