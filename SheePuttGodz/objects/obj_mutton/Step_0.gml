@@ -29,10 +29,47 @@ if (press_jump && z <= 0 && on_land) && canControl{
 	in_air = true
 }
 
+//wandering
+if !footMovement{
+	if wandering{
+		wanderingCooldown -= 1
+		if wanderingCooldown < 0{
+			waitingCooldown = waitingCooldownMax  + random_range(-3*60,3*60)
+			wandering = false
+		}
+		dx = (dirStandingPos.x - myStandingPos.x)*spdWander
+		dy = (dirStandingPos.y - myStandingPos.y)*spdWander
+	} else {
+		waitingCooldown -= 1
+		if waitingCooldown < 0{
+			wanderingCooldown = wanderingCooldownMax + random_range(-30,30)
+			wandering = true
+			dirStandingPos = {
+				x: myStandingPos.x + random_range(-tileWanderingDistMax,tileWanderingDistMax), 
+				y: myStandingPos.y + random_range(-tileWanderingDistMax,tileWanderingDistMax)
+			}
+		}
+		
+		var _dist = sqrt(sqr(grid_x - dirStandingPos.x) + sqr(grid_y - dirStandingPos.y))
+		spdWander = _dist / wanderingCooldown
+	}
+} else if footMovement{
+	if scaredTime < 0 {
+		var _speed = sqrt(dx * dx + dy * dy);
+		if _speed < 0.01{
+			wandering = false
+			myStandingPos = {x:grid_x,y:grid_y}
+			wanderingCooldown = wanderingCooldownMax + random_range(-60,60)
+			waitingCooldown = waitingCooldownMax  + random_range(-60,60)
+			footMovement = false
+		}
+	}
+}
 
 var collisions_d = (_try_move(dx, dy, dz))
 
 scaredTime -= 1
+
 if on_water{
 	scaredTime = -1
 	slowing = water_slowing
@@ -70,4 +107,14 @@ y += screen_d.y
 //layers
 if !mort{
 depth = -bbox_bottom
+}
+
+if !in_air{
+	if  collisions_d.dx !=0 ||  collisions_d.dy !=0{
+		tempsRot += 5 +(sqrt( collisions_d.dx* collisions_d.dx +  collisions_d.dy* collisions_d.dy)*50)
+		rot = dsin(tempsRot) * 10
+	} else{
+		tempsRot = 0
+		rot = lerp(rot,0,0.1)
+	}
 }

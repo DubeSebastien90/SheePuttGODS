@@ -15,7 +15,7 @@ clouds_active = false;
 clouds_spr_idx = 0;
 clouds_speed = 0.45;
 
-max_force_repulsion = 0.15;
+max_force_repulsion = 0.12;
 max_jump_dist = 2
 max_repulsion_dist = 4
 distStomp = 0.7

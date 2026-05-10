@@ -48,6 +48,7 @@ switch (state) {
 					stomped()
 				} else if !mort{
                 if (_dist > 0 && _dist <= other.max_repulsion_dist) && on_land{
+					footMovement = true
                     var _force = other.max_force_repulsion * (1 - _dist / other.max_repulsion_dist);
                     dx += (_ddx / _dist) * _force;
                     dy += (_ddy / _dist) * _force;

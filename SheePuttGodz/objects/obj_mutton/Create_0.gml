@@ -25,8 +25,22 @@ canControl = false
 
 slowing = 0.001
 water_slowing = 0.005
-scaredTime = 0
+scaredTime = 3
 scaredMaxTime = 30
+
+rot = 0
+tempsRot = 0
+
+myStandingPos = {x:0,y:0}
+dirStandingPos = {x:0,y:0}
+wanderingCooldownMax = 60
+wanderingCooldown = 0
+waitingCooldown = 0
+waitingCooldownMax = 60*4
+tileWanderingDistMax = 0.5
+wandering = false
+spdWander = 0
+footMovement = true
 
 function _try_move(dx, dy, dz) {
     var applied_dx = 0;
