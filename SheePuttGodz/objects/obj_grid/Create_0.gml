@@ -4,6 +4,9 @@ tile_w = sprite_get_width(spr_tile) / 2;
 tile_h = sprite_get_height(spr_tile) / 4;
 tile_h_vertical = 2 * tile_h
 
+grid_origin_x = room_width  / 2;
+grid_origin_y = (room_height / 2) - (24 * tile_h); //todo remplacer 16 par level heit
+
 function room_pos_to_game_pos(room_x, room_y) {
     var dx = room_x - grid_origin_x;
     var dy = room_y - grid_origin_y;
@@ -30,13 +33,17 @@ function game_pos_to_room_pos(game_x, game_y) {
     };
 }
 
+levels_raw = get_levels();
 
-level_index = -1
-levels = get_levels()
+global.cached_levels = [];
 
+for (var i = 0; i < array_length(levels_raw); i++) {
+    global.cached_levels[i] = _build_level([levels_raw[i]]);
+}
 
-grid_origin_x = room_width  / 2;
-grid_origin_y = (room_height / 2) - (24 * tile_h); //todo remplacer 16 par level heit
+level_index = -1;
+muttons_for_win = 10;
+change_level(0);
 
 muttons_for_win = 10
 change_level(0)
@@ -96,38 +103,50 @@ function is_swimable(tile_x, tile_y) {
     return array_contains(SWIMMABLE_TILES, value);
 }
 
-function change_level(_level_index){
-	with(obj_mutton){
-		instance_destroy()
-	}
-	with(obj_end_gate){
-		instance_destroy()
-	}
-	with(obj_foot_print){
-		instance_destroy()
-	}
-    with(obj_bumper){
-		instance_destroy()
-	}
-    with(obj_foot){
-        instance_destroy()
+function change_level(_level_index) {
+    with(obj_mutton) instance_destroy();
+    with(obj_end_gate) instance_destroy();
+    with(obj_foot_print) instance_destroy();
+    with(obj_bumper) instance_destroy();
+    with(obj_foot) instance_destroy();
+    with(obj_wolf) instance_destroy();
+    
+    instance_create_layer(mouse_x, mouse_y, "Instances", obj_foot);
+    muttons_for_win = get_level_conditions(_level_index).muttons_for_win;
+    
+    level = global.cached_levels[_level_index];
+    level_index = _level_index;
+    
+    for (var n = 0; n < array_length(level.entities); n++) {
+        var ent = level.entities[n];
+        
+        if (ent.type == obj_mutton) {
+            var pos = game_pos_to_room_pos(ent.i, ent.j);
+            instance_create_layer(pos.x, pos.y, "Instances", obj_mutton);
+        }
+        else if (ent.type == obj_end_gate) {
+            var pos = game_pos_to_room_pos(ent.i, ent.j);
+            with(instance_create_layer(pos.x, pos.y, "dessous", obj_end_gate)) {
+                tile_i = ent.i;
+                tile_j = ent.j;
+                if (ent.is_water) y += 4;
+            }
+        }
+        else if (ent.type == obj_bumper) {
+            var pos = game_pos_to_room_pos(ent.i - 1, ent.j - 1);
+            with(instance_create_layer(pos.x, pos.y, "dessous", obj_bumper)) {
+                tile_i = ent.i;
+                tile_j = ent.j;
+            }
+        }
+        else if (ent.type == obj_wolf) {
+            var pos = game_pos_to_room_pos(ent.i - 1, ent.j - 1);
+            with(instance_create_layer(pos.x, pos.y, "dessous", obj_wolf)) {
+                grid_x = ent.i;
+                grid_y = ent.j;
+            }
+        }
     }
-    instance_create_layer(mouse_x, mouse_y, "Instances", obj_foot)
-	muttons_for_win = get_level_conditions(_level_index).muttons_for_win
-	
-	var _decoS =noone
-	var _decoD = noone
-	if(level_index == _level_index){
-		_decoS = level.decos_s
-		_decoD = level.decos_d
-	}
-	
-	level = _build_level([levels[_level_index]]);
-	if(level_index == _level_index){
-		level.decos_s = _decoS
-		level.decos_d = _decoD
-	}
-	level_index = _level_index
 }
 
 wiggle_time = shader_get_uniform(shd_wiggle, "u_time");

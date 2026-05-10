@@ -86,7 +86,7 @@ global.level_data = [
         "b....bb..b.b...b",
         "b.bb......b.bb.b",
         "b.bb........bb.b",
-        "b..............b",
+        "b.....v........b",
         "bbbbbbbbbbbbbbbb",
         ]
     ];
@@ -132,48 +132,44 @@ function _build_level(_level_data){
         var rows = _level_data[idx];
         var lh   = array_length(rows);
         var lw   = string_length(rows[0]);
+        var _mp_grid = mp_grid_create(0, 0, lw, lh, 1, 1);
         
         var _grid      = ds_grid_create(lw, lh);
         var _gate_grid = ds_grid_create(lw, lh);
         ds_grid_clear(_gate_grid, false);
+        
+        var _entities = [];
 
         for (var j = 0; j < lh; j++) {
             var row = rows[j];
             for (var i = 0; i < lw; i++) {
                 var c = string_char_at(row, i + 1);
                 var val = _map_character(c);
-				if c = "m"{
-					val = 1
-					var mutton_pos = obj_grid.game_pos_to_room_pos(i,j)
-					instance_create_layer(mutton_pos.x,mutton_pos.y,"Instances",obj_mutton)
-				}
-				else if c = "e"{
-					val = 1
-					ds_grid_set(_gate_grid, i, j, true);
-					var end_gate_pos = obj_grid.game_pos_to_room_pos(i,j)
-					with(instance_create_layer(end_gate_pos.x,end_gate_pos.y,"dessous",obj_end_gate)){
-						tile_i = i
-						tile_j = j
-					}
-				}
-				else if c = "w"{
-					val = 2
-					ds_grid_set(_gate_grid, i, j, true);
-					var end_gate_pos = obj_grid.game_pos_to_room_pos(i,j)
-					with(instance_create_layer(end_gate_pos.x,end_gate_pos.y,"dessous",obj_end_gate)){
-						tile_i = i
-						tile_j = j
-						y += 4
-					}
-				}
-                else if c = "b"{
-                    val = 1
-					var bumper_pos = obj_grid.game_pos_to_room_pos(i-1,j-1)
-					with(instance_create_layer(bumper_pos.x,bumper_pos.y,"dessous",obj_bumper)){
-						tile_i = i
-						tile_j = j
-					}
+                
+                if (c == "m") {
+                    val = 1;
+                    array_push(_entities, { type: obj_mutton, i: i, j: j });
                 }
+                else if (c == "e") {
+                    val = 1;
+                    ds_grid_set(_gate_grid, i, j, true);
+                    array_push(_entities, { type: obj_end_gate, i: i, j: j, is_water: false });
+                }
+                else if (c == "w") {
+                    val = 2;
+                    ds_grid_set(_gate_grid, i, j, true);
+                    array_push(_entities, { type: obj_end_gate, i: i, j: j, is_water: true });
+                }
+                else if (c == "b") {
+                    val = 1;
+                    mp_grid_add_cell(_mp_grid, i, j);
+                    array_push(_entities, { type: obj_bumper, i: i, j: j });
+                }
+                else if (c == "v") {
+                    val = 1;
+                    array_push(_entities, { type: obj_wolf, i: i, j: j });
+                }
+                
                 ds_grid_set(_grid, i, j, val);
             }
         }
@@ -199,11 +195,13 @@ function _build_level(_level_data){
             for (var i = lw - 1; i >= 0; i--) {
                 var tile = ds_grid_get(_grid, i, j)
                 if tile == 0 {
+                    mp_grid_add_cell(_mp_grid, i, j);
                     ds_grid_set(_tiles, i, j, null_value);
                     ds_grid_set(_decos_s, i, j, null_value);
                     ds_grid_set(_decos_d, i, j, null_value);
                     continue;
                 }
+                if tile == 2 mp_grid_add_cell(_mp_grid, i, j);
                 
                 var r_pos = obj_grid.game_pos_to_room_pos(i, j);
                 
@@ -236,7 +234,9 @@ function _build_level(_level_data){
             decos_s: _decos_s,
             decos_d: _decos_d,
             width: lw,
-            height: lh 
+            height: lh,
+            mp_grid: _mp_grid,
+            entities: _entities
         };
     }
     
