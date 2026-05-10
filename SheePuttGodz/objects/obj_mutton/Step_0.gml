@@ -82,6 +82,8 @@ with (obj_bumper) {
     var bumper_radius = 0.8;
 
     if (_dist_3d < bumper_radius) {
+        bumper_active = 0;
+        image_index = 1
         _dist_3d = (_dist_3d == 0) ? 0.01 : _dist_3d;
 
         var _xn = (other.grid_x - tile_i) / _dist_3d;
