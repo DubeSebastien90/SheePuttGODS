@@ -12,7 +12,7 @@ path_timer = 60;
 eat_time = 0;
 eat_timer = 60;
 stun_time = 0;
-stun_timer = 1000;
+stun_timer = 60*3;
 
 state = "searching";
 target_sheep = noone;
@@ -24,6 +24,13 @@ approach_radius = 0.7;
 
 mp_grid = obj_grid.level.mp_grid;
 
+wolf_side = 1
+wolf_xscale = 1.0
+wolf_rot = 0
+wolf_rot_time = 0
+wolf_moving = false
+
 function stunWolf(){
 	image_index = 2
+	depth = 200
 }

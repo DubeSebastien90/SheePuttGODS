@@ -2,6 +2,8 @@ if obj_level_manager.menuState == 1 exit;
 if stun_time > 0 {
     --stun_time;
     exit;
+} else{
+	image_index = 0
 }
 
 if state == "searching" {
@@ -82,6 +84,14 @@ if state == "searching" {
             x += _screen.x;
             y += _screen.y;
 
+            if (_screen.x != 0) {
+                wolf_side = -sign(_screen.x);
+            }
+            var _spd = sqrt(move_dx * move_dx + move_dy * move_dy);
+            wolf_rot_time += 5 + _spd * 50;
+            wolf_rot = dsin(wolf_rot_time) * 10;
+            wolf_moving = true;
+
             var _dist_3d = point_distance_3d(
                 grid_x, grid_y, 0,
                 target_sheep.grid_x, target_sheep.grid_y, target_sheep.z
@@ -121,4 +131,11 @@ if state == "searching" {
     }
 }
 
-depth = -bbox_bottom;
+wolf_xscale = lerp(wolf_xscale, wolf_side, 0.2);
+if (!wolf_moving) {
+    wolf_rot = lerp(wolf_rot, 0, 0.1);
+}
+wolf_moving = false;
+
+var _h = sprite_get_height(sprite_index)
+depth = -bbox_bottom - _h * 2;

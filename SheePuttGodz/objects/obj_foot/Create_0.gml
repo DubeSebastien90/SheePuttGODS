@@ -30,7 +30,7 @@ shockwave_segments = 20;
 shockwave_wobble_amp = 0.12;
 shockwave_wobble_freq = 6;
 
-origin_ofsset_y = 6
+origin_ofsset_y = 0
 
 draw_wobbly_ring = function(cx, cy, radius, alpha) {
     draw_set_alpha(alpha);
