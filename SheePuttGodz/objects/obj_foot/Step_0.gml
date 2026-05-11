@@ -17,6 +17,7 @@ switch (state) {
                 clouds_spr_idx = 0;
                 state = "descending";
 				obj_star_manager.nbStomps += 1
+				obj_son.play_sound(getGodSound(),0.03)
             }
         } else {
             x = -1;

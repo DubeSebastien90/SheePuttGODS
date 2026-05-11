@@ -51,3 +51,7 @@ draw_wobbly_ring = function(cx, cy, radius, alpha) {
 };
 
 myOmbre = instance_create_layer(x,y,"dessus",obj_foot_ombre)
+
+function getGodSound(){
+	return choose(snd_god_1, snd_god_2, snd_god_3, snd_god_4, snd_god_5, snd_god_6, snd_god_7, snd_god_8, snd_god_9, snd_god_10, snd_god_11, snd_god_12, snd_god_13, snd_god_14)
+}
