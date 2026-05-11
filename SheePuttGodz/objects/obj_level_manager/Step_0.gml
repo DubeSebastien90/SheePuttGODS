@@ -18,6 +18,7 @@ if global.conditions[obj_grid.level_index].muttons_total - nbMuttonFoutus <  glo
 
 if _prevArrived < nbMuttonArrived{
 	startAnimation()
+	obj_son.play_sound(snd_boup,0.15)
 }
 
 if nbMuttonArrived >= obj_grid.muttons_for_win{
