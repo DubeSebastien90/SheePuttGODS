@@ -6,6 +6,8 @@ function resetMetrics(){
 	timer = 0
 }
 
+
+
 function submitStar(level, num){
 	if num == 1 {
 		if global.conditions[level].first_star.collected = false{

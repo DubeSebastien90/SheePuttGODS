@@ -169,3 +169,9 @@ wave_intensity = shader_get_uniform(shd_wave, "u_intensity");
 
 shd_time = 0;
 
+if debug_mode{
+	audio_play_sound(snd_music_debug,0,true)
+} else {
+	audio_play_sound(snd_music,0,true)
+}
+
