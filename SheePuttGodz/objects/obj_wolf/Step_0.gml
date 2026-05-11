@@ -106,11 +106,9 @@ if state == "searching" {
         target_sheep.z = 0;
         
         if eat_time <= 0 {
-            repeat(5){
-               with(instance_create_layer(x,y,"dessus",obj_part_water)){
-                   sprite_index = 1
-                   draggedX = other.x/2
-                   draggedY = other.y/2
+            repeat(10){
+               with(instance_create_layer(target_sheep.x,target_sheep.y,"dessus",obj_part_water)){
+                   image_index = 1
                }
             }
             instance_destroy(target_sheep);
