@@ -116,5 +116,5 @@ cooldownWaves -= 1
 if cooldownWaves < 0 && nbWaves > 0{
 	cooldownWaves = cooldownWavesMax
 	nbWaves -= 1
-	//instance_create_layer(impact.x,impact.y,"dessous",obj_wave)
+	instance_create_layer(impact.x,impact.y,"dessous",obj_wave)
 }

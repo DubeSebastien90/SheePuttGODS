@@ -3,7 +3,7 @@ scale += 0.05
 image_xscale = scale
 image_yscale = scale
 
-image_alpha  = 1 - (scale / size_max)
+image_alpha  = ((1 - (scale / size_max)) * 0.6) 
 
 
 if size_max <= scale{
