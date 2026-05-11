@@ -103,11 +103,16 @@ if state == "searching" {
     if instance_exists(target_sheep) {
         target_sheep.grid_x = grid_x;
         target_sheep.grid_y = grid_y;
-        target_sheep.z      = 0;
-        target_sheep.image_xscale = max(0, target_sheep.image_xscale - 0.05);
-        target_sheep.image_yscale = max(0, target_sheep.image_yscale - 0.05);
-
+        target_sheep.z = 0;
+        
         if eat_time <= 0 {
+            repeat(5){
+               with(instance_create_layer(x,y,"dessus",obj_part_water)){
+                   sprite_index = 1
+                   draggedX = other.x/2
+                   draggedY = other.y/2
+               }
+            }
             instance_destroy(target_sheep);
             state = "searching";
             path_time = irandom_range(0, path_jitter);

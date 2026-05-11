@@ -17,6 +17,7 @@ angle_speed = random_range(1,3)
 angle_side = choose(-1,1)
 
 depth += 100
+image_speed = 0;
 
 draggedX = 0
 draggedY = 0
