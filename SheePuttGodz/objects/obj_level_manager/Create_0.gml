@@ -21,6 +21,8 @@ timeToWin = 30
 winCooldown = timeToWin
 
 canEnd = false
+isLoosing = false
+nbMuttonFoutus = 0
 
 menuState = -1
 

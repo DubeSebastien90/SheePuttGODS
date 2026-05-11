@@ -1,9 +1,19 @@
 var _prevArrived = nbMuttonArrived
 nbMuttonArrived = 0
+nbMuttonFoutus = 0
 with(obj_mutton){
 	if isInWinnableTile(){
 		other.nbMuttonArrived += 1
 	}
+	if isCompletementFoutu(){
+		other.nbMuttonFoutus += 1
+	}
+}
+
+if global.conditions[obj_grid.level_index].muttons_total - nbMuttonFoutus <  global.conditions[obj_grid.level_index].muttons_for_win{
+	isLoosing = true
+} else {
+	isLoosing = false
 }
 
 if _prevArrived < nbMuttonArrived{

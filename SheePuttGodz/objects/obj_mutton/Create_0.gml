@@ -164,3 +164,12 @@ function isInWinnableTile(){
 	}
 	return false
 }
+
+function isCompletementFoutu(){
+	if !in_air && on_water{
+		if !isInWinnableTile(){
+			return true
+		}
+	}
+	return mort
+}
