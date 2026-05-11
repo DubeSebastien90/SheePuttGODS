@@ -1,3 +1,8 @@
+if stun_time > 0 {
+    --stun_time;
+    exit;
+}
+
 if state == "searching" {
     path_time--;
     if path_time <= 0 {
