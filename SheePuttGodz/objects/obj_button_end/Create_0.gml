@@ -6,6 +6,9 @@ selected = false
 size = 1
 temps = 0
 
+rot = 0
+_temps = 0
+
 function is_hovered(){
 	if !show return false;
 	var mxg = device_mouse_x_to_gui(0);
