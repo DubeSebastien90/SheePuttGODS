@@ -63,6 +63,12 @@ switch (state) {
                 }
 				}
             }
+            with (obj_wolf) {
+                var _dist = point_distance(other.impact_on_grid.x, other.impact_on_grid.y, grid_x, grid_y)
+                if _dist <= other.distStomp {
+                    stun_time = stun_timer;
+                }
+            }
 			
 			instance_create_layer(impact.x,impact.y,"dessous",obj_foot_print)
 			
