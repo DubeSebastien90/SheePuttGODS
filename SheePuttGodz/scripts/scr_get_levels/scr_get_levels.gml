@@ -12,7 +12,7 @@ global.level_data = [
         "~~~~~...........~~~~~~",
         "~~~~~...........~~~~~~",
         "~~~~~...........~~~~~~",
-        "~~~~~...........~~~~~~",
+        "~~~~~.....v.....~~~~~~",
         "~~~~~...........~~~~~~",
         "~~~~~...........~~~~~~",
         "~~~~~~eeeeeeeee~~~~~~~",
@@ -437,15 +437,19 @@ function _build_level(_level_data){
             }
         }
 
-        with (obj_end_gate) {
-            var gi = tile_i;
-            var gj = tile_j;
-            var _n = (gj > 0)      && ds_grid_get(_gate_grid, gi,   gj-1);
-            var _e = (gi < lw-1)   && ds_grid_get(_gate_grid, gi+1, gj);
-            var _s = (gj < lh-1)   && ds_grid_get(_gate_grid, gi,   gj+1);
-            var _w = (gi > 0)      && ds_grid_get(_gate_grid, gi-1, gj);
-            image_index = _gate_sprite_idx(_n, _e, _s, _w);
-        }
+        for (var k = 0; k < array_length(_entities); k++) {
+    var e = _entities[k];
+    if (e.type != obj_end_gate) continue;
+    
+    var gi = e.i;
+    var gj = e.j;
+    var _n = (gj > 0)    && ds_grid_get(_gate_grid, gi,   gj-1);
+    var _e = (gi < lw-1) && ds_grid_get(_gate_grid, gi+1, gj);
+    var _s = (gj < lh-1) && ds_grid_get(_gate_grid, gi,   gj+1);
+    var _w = (gi > 0)    && ds_grid_get(_gate_grid, gi-1, gj);
+    
+    e.img_index = _gate_sprite_idx(_n, _e, _s, _w);
+}
         ds_grid_destroy(_gate_grid);
         
         var _tiles = ds_grid_create(lw, lh);

@@ -138,6 +138,7 @@ function change_level(_level_index) {
             with(instance_create_layer(pos.x, pos.y, "dessous", obj_end_gate)) {
                 tile_i = ent.i;
                 tile_j = ent.j;
+				_img_index = ent.img_index
                 if (ent.is_water) y += 4;
             }
         }
