@@ -7,6 +7,9 @@ function resetMetrics(){
 	with(obj_bumper){
 		isBounced = false
 	}
+	with(obj_wolf){
+		isStomped = false
+	}
 }
 
 
@@ -66,7 +69,17 @@ function checkLevelTime(){
 		if !bounced{
 			submitStar(obj_grid.level_index,3)
 		}
-	} else{
+	} else if obj_grid.level_index == 9{
+		var _stomped = true
+		with(obj_wolf){
+			if !isStomped {
+				_stomped = false
+			}
+		}
+		if _stomped{
+			submitStar(obj_grid.level_index,3)
+		}
+	}else{
 		if timer <= global.conditions[obj_grid.level_index].third_star.nbSeconds{
 			submitStar(obj_grid.level_index,3)
 		}

@@ -12,7 +12,7 @@ path_timer = 60;
 eat_time = 0;
 eat_timer = 60;
 stun_time = 0;
-stun_timer = 60*3;
+stun_timer = 60*5;
 
 state = "searching";
 target_sheep = noone;
@@ -30,7 +30,10 @@ wolf_rot = 0
 wolf_rot_time = 0
 wolf_moving = false
 
+isStomped = false
+
 function stunWolf(){
 	image_index = 2
 	depth = 200
+	isStomped = true
 }

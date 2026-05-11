@@ -214,7 +214,31 @@ global.level_data = [
         "~~~~~~~~~~~~~~~~~~~~~~",
         "~~~~~~~~~~~~~~~~~~~~~~",
         "~~~~~~~~~~~~~~~~~~~~~~",
-    ],																	
+    ],	
+	[
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~.......~~~~~~~~",
+        "~~~~~~...m.m...~~~~~~~",
+        "~~~~~.....m.....~~~~~~",
+        "~~~~~...........~~~~~~",
+        "~~~~~...........~~~~~~",
+        "~~~~~b.........b~~~~~~",
+        "~~~~~...........~~~~~~",
+        "~~~~~....v.v....~~~~~~",
+        "~~~~~...........~~~~~~",
+        "~~~~~...........~~~~~~",
+        "~~~~~~eeeeeeeee~~~~~~~",
+        "~~~~~~~eeeeeee~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+    ],
 ];
 
 function get_levels() {
@@ -427,6 +451,29 @@ global.conditions = [
 		{
 			collected: false,
 			description: "Finish in under 5 seconds",
+			nbSeconds: 5
+		}
+	},
+	{
+		level_title: "Please don't eat me!",
+		unlocked: false,
+		muttons_for_win: 2,
+		muttons_total: 3,
+		first_star: 
+		{
+			collected: false,
+			description: "Bring all sheeps to the end"
+		},
+		second_star: 
+		{
+			collected: false,
+			description: "Finish the level in max 3 stoms",
+			nbStomps: 3
+		},
+		third_star: 
+		{
+			collected: false,
+			description: "Stomp every wolves",
 			nbSeconds: 5
 		}
 	}
