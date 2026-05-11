@@ -1,3 +1,4 @@
+if obj_level_manager.menuState == 1 exit;
 if stun_time > 0 {
     --stun_time;
     exit;
