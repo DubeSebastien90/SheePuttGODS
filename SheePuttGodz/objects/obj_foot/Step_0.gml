@@ -30,6 +30,7 @@ switch (state) {
         height_offset = max(0, height_offset - speed);
         if (height_offset == 0) {
 			obj_son.play_sound(choose(snd_footstomp,snd_footstomp2),0.2)
+			start_waves()
             speed = 0;
             image_speed = 1;
             screenShake(3,30);
@@ -110,3 +111,10 @@ switch (state) {
 }
 
 depth = -impact.y-origin_ofsset_y
+
+cooldownWaves -= 1
+if cooldownWaves < 0 && nbWaves > 0{
+	cooldownWaves = cooldownWavesMax
+	nbWaves -= 1
+	//instance_create_layer(impact.x,impact.y,"dessous",obj_wave)
+}
