@@ -119,6 +119,23 @@ global.level_data = [
 		"~~~~~~~~~~~~~~~~~~~~~~",
         "~~~~~~~~~~~~~~~~~~~~~~",
     ],
+	[																	
+		"~~~~~~~~~~~~~~~",
+		"~~~~~~~~~~~~~~~",
+		"~~~~~~~~~~~~~~~",
+		"~~~b.........~~",
+		"~~b.......ee.~~",
+		"~b........ee.~~",
+		"~............~~",
+		"~....~~~~~~~~~~",
+		"~.mm.~~~~~~~~~~",
+		"~.mm.~~~~~~~~~~",
+		"~....~~~~~~~~~~",
+		"~....~~~~~~~~~~",
+		"~~~~~~~~~~~~~~~",
+		"~~~~~~~~~~~~~~~",
+		"~~~~~~~~~~~~~~~",
+	],
 	[
         "~~~~~~~~~~~~~~~~~~~~~~",
         "~~~~~~~~~~~~~~~~~~~~~~",
@@ -190,8 +207,9 @@ global.level_data = [
         "~~~~~~~~~~~~~~~~~~~~~~",
         "~~~~~~~~~~~~~~~~~~~~~~",
         "~~~~~~~~~~~~~~~~~~~~~~",
-    ],
-    ];
+    ],																	
+];
+
 function get_levels() {
     return global.level_data;
 }
@@ -310,6 +328,29 @@ global.conditions = [
 		{
 			collected: false,
 			description: "Finish in under 10 seconds",
+			nbSeconds: 10
+		}
+	},
+	{
+		level_title: "Par 2!",
+		unlocked: false,
+		muttons_for_win: 1,
+		muttons_total: 4,
+		first_star: 
+		{
+			collected: false,
+			description: "Bring all sheeps to the end"
+		},
+		second_star: 
+		{
+			collected: false,
+			description: "Finish the level in max 6 stomps",
+			nbStomps: 2
+		},
+		third_star: 
+		{
+			collected: false,
+			description: "Stomp 3 of your sheeps",
 			nbSeconds: 10
 		}
 	},
