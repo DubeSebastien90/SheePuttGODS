@@ -54,6 +54,9 @@ switch (state) {
 						dz = jumpForce //* (1 - _dist / other.max_jump_dist);
 						in_air = true;
 						spin_side = choose(1,-1)
+						obj_son.play_sound(snd_sheep_screaming,0.15)
+					} else {
+						obj_son.play_sound(snd_sheep_normal,0.15)
 					}
 					scaredTime = scaredMaxTime
                 }

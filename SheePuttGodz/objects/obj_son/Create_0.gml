@@ -18,6 +18,7 @@ function play_sound(snd, pitch_diff) {
     cleanup_inst.lifetime = duration;
 }
 
+
 function play_sound_myself(snd, boucle){
 	    // Créer un nouvel émetteur audio
     var emitter = audio_emitter_create();

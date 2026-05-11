@@ -107,7 +107,7 @@ function is_swimable(tile_x, tile_y) {
 }
 
 function change_level(_level_index) {
-	if global.conditions[_level_index].unlocked == false{
+	if global.conditions[_level_index].unlocked == false && !debug_mode{
 		return
 	}
 	

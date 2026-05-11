@@ -81,6 +81,7 @@ with (obj_bumper) {
     var bumper_radius = 0.8;
 
     if (_dist_3d < bumper_radius) {
+		obj_son.play_sound(snd_boing,0.1)
         bumper_active = 0;
         image_index = 1
         _dist_3d = (_dist_3d == 0) ? 0.01 : _dist_3d;
@@ -159,6 +160,7 @@ if (collisions_d.dz == 0 && dz < 0) {
 	var prev_in_air = in_air
 	in_air = false
 	if (on_water && prev_in_air = true && in_air = false){
+		obj_son.play_sound(snd_splash,0.1)
 		repeat(10){
 			with(instance_create_layer(x,y,"dessus",obj_part_water)){
 				draggedX = other.screen_d.x/2
@@ -194,3 +196,9 @@ if !in_air{
 }
 
 _side = lerp(_side,side,0.2)
+
+if !mort &&!footMovement{
+	if random_range(0,100) < 0.1{
+		obj_son.play_sound(snd_sheep_normal,0.15)
+	}
+}
