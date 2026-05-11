@@ -240,7 +240,7 @@ global.conditions = [
 		third_star: 
 		{
 			collected: false,
-			description: "Finish in under 15 seconds",
+			description: "Stomp 3 of your sheeps",
 			nbSeconds: 15
 		}
 	},
@@ -286,7 +286,7 @@ global.conditions = [
 		third_star: 
 		{
 			collected: false,
-			description: "Finish in under 15 seconds",
+			description: "Put the two sheeps in the same tile",
 			nbSeconds: 15
 		}
 	},
@@ -332,7 +332,7 @@ global.conditions = [
 		third_star: 
 		{
 			collected: false,
-			description: "Finish in under 10 seconds",
+			description: "Complete the level without bouncing once",
 			nbSeconds: 10
 		}
 	},

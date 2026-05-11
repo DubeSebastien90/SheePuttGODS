@@ -88,6 +88,7 @@ with (obj_bumper) {
 
     if (_dist_3d < bumper_radius) {
 		obj_son.play_sound(snd_boing,0.1)
+		isBounced = true
         bumper_active = 0;
         image_index = 1
         _dist_3d = (_dist_3d == 0) ? 0.01 : _dist_3d;

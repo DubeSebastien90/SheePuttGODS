@@ -158,16 +158,16 @@ function isInWinnableTile(){
 	if !in_air && !mort{
 	with(obj_end_gate){
 		if (tile_i = floor(other.grid_x) && tile_j = floor(other.grid_y)){
-			return true
+			return {x: tile_i, y: tile_j}
 		}
 	}
 	}
-	return false
+	return noone
 }
 
 function isCompletementFoutu(){
 	if !in_air && on_water{
-		if !isInWinnableTile(){
+		if isInWinnableTile() == noone{
 			return true
 		}
 	}

@@ -2,7 +2,7 @@ var _prevArrived = nbMuttonArrived
 nbMuttonArrived = 0
 nbMuttonFoutus = 0
 with(obj_mutton){
-	if isInWinnableTile(){
+	if isInWinnableTile() != noone{
 		other.nbMuttonArrived += 1
 	}
 	if isCompletementFoutu(){
