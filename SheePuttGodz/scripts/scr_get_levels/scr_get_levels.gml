@@ -119,6 +119,30 @@ global.level_data = [
 		"~~~~~~~~~~~~~~~~~~~~~~",
         "~~~~~~~~~~~~~~~~~~~~~~",
     ],
+	[
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~.......~~~~~~~~",
+        "~~~~~~.........~~~~~~~",
+        "~~~~~.....m.....~~~~~~",
+        "~~~~~...........~~~~~~",
+        "~~~~~...........~~~~~~",
+        "~~~~~...........~~~~~~",
+        "~~~~~...........~~~~~~",
+        "~~~~~.....v.....~~~~~~",
+        "~~~~~...........~~~~~~",
+        "~~~~~...........~~~~~~",
+        "~~~~~~eeeeeeeee~~~~~~~",
+        "~~~~~~~eeeeeee~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+        "~~~~~~~~~~~~~~~~~~~~~~",
+    ],
     ];
 function get_levels() {
     return global.level_data;
@@ -185,7 +209,7 @@ global.conditions = [
 		second_star: 
 		{
 			collected: false,
-			description: "Finish the level in only 6 stomps",
+			description: "Finish the level in max 6 stomps",
 			nbStomps: 6
 		},
 		third_star: 
@@ -208,7 +232,7 @@ global.conditions = [
 		second_star: 
 		{
 			collected: false,
-			description: "Finish the level in only 4 stomps",
+			description: "Finish the level in max 4 stomps",
 			nbStomps: 4
 		},
 		third_star: 
@@ -231,7 +255,7 @@ global.conditions = [
 		second_star: 
 		{
 			collected: false,
-			description: "Finish the level in only 3 stomps",
+			description: "Finish the level in max 3 stomps",
 			nbStomps: 3
 		},
 		third_star: 
@@ -239,6 +263,29 @@ global.conditions = [
 			collected: false,
 			description: "Finish in under 10 seconds",
 			nbSeconds: 10
+		}
+	},
+	{
+		level_title: "Oh look, a new friend!",
+		unlocked: false,
+		muttons_for_win: 1,
+		muttons_total: 1,
+		first_star: 
+		{
+			collected: false,
+			description: "Bring all sheeps to the end"
+		},
+		second_star: 
+		{
+			collected: false,
+			description: "Finish the level in only 1 stomp",
+			nbStomps: 1
+		},
+		third_star: 
+		{
+			collected: false,
+			description: "Finish in under 5 seconds",
+			nbSeconds: 5
 		}
 	}
 ]
