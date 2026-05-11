@@ -29,6 +29,6 @@ if menuState != 0{
 	draw_text_transformed(65,165,string(nbMuttonArrived)+"/"+string(global.conditions[obj_grid.level_index].muttons_for_win ),1,1,0)
 	
 	var _tenths = floor((obj_star_manager.timer mod 1) * 10)
-	var _secs = floor(obj_star_manager.timer mod 60)
+	var _secs = floor(obj_star_manager.timer)
 	draw_text_transformed(5,200,"Timer: " + string(_secs) + "." + string(_tenths),1,1,0)
 }

@@ -9,7 +9,7 @@ impact = { x: -1, y: -1 };
 impact_on_grid = { x: -1, y: -1 };
 spr_index = spr_marker;
 speed = 0;
-height_offset = 0;
+height_offset = 8;
 stomp_hold = 0;
 
 clouds_active = false;

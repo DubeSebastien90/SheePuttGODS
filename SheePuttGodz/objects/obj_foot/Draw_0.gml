@@ -48,6 +48,6 @@ switch (state) {
         );
 		}
         
-        draw_sprite_ext(spr_foot, image_index, impact.x, impact.y - height_offset, 1, 1, 0, c_white, 1);
+        draw_sprite_ext(spr_foot, image_index, impact.x, impact.y - height_offset, 1, 10, 0, c_white, 1);
     break;
 }
