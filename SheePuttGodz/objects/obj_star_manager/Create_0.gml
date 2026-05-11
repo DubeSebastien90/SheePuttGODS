@@ -37,6 +37,7 @@ function submitStar(level, num){
 
 function checkLevelTime(){
 	if obj_grid.level_index == 1{
+		//stomp 3 muttons
 		var nbMort = 0
 		with(obj_mutton){
 			if mort {
@@ -48,6 +49,7 @@ function checkLevelTime(){
 		}
 		
 	} else if obj_grid.level_index == 3{
+		//end in same square
 		var _tile = noone
 		with(obj_mutton){
 			if _tile != noone && isInWinnableTile() != noone{
@@ -60,6 +62,7 @@ function checkLevelTime(){
 			}
 		}
 	} else if obj_grid.level_index == 5{
+		//zero bounces
 		var bounced = false
 		with(obj_bumper){
 			if isBounced {
@@ -70,6 +73,7 @@ function checkLevelTime(){
 			submitStar(obj_grid.level_index,3)
 		}
 	} else if obj_grid.level_index == 9{
+		//stomp every wolves
 		var _stomped = true
 		with(obj_wolf){
 			if !isStomped {
