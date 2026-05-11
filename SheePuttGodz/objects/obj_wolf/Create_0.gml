@@ -14,6 +14,9 @@ eat_timer = 60;
 stun_time = 0;
 stun_timer = 60*5;
 
+rot = 0;
+tempsRot = 0;
+
 state = "searching";
 target_sheep = noone;
 

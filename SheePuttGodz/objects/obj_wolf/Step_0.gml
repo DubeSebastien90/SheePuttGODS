@@ -1,11 +1,13 @@
 if obj_level_manager.menuState == 1 exit;
 if stun_time > 0 {
+    image_index = 2;
     --stun_time;
     exit;
 } else{
 	image_index = 0
 }
 
+image_index = 0;
 if state == "searching" {
     path_time--;
     if path_time <= 0 {
@@ -83,6 +85,17 @@ if state == "searching" {
             var _screen = obj_grid._iso_vec_to_screen(move_dx, move_dy);
             x += _screen.x;
             y += _screen.y;
+            
+            if _screen.x != 0{
+	           side = -sign(_screen.x)
+            }
+            if  _screen.x !=0 ||  _screen.y !=0{
+		      tempsRot += 5 +(sqrt( _screen.x* _screen.x +  _screen.y* _screen.y)*50)
+		      rot = dsin(tempsRot) * 10
+            } else{
+		      tempsRot = 0
+		      rot = lerp(rot,0,0.1)
+	           }
 
             if (_screen.x != 0) {
                 wolf_side = -sign(_screen.x);
@@ -114,6 +127,7 @@ if state == "searching" {
         target_sheep.grid_x = grid_x;
         target_sheep.grid_y = grid_y;
         target_sheep.z = 0;
+        image_index = 1;
         
         if eat_time <= 0 {
             repeat(10){
@@ -125,6 +139,9 @@ if state == "searching" {
             state = "searching";
             path_time = irandom_range(0, path_jitter);
         }
+        wolf_rot_time += 20;
+            wolf_rot = dsin(wolf_rot_time) * 5;
+            wolf_moving = true;
     } else {
         state = "searching";
         path_time = irandom_range(0, path_jitter);
