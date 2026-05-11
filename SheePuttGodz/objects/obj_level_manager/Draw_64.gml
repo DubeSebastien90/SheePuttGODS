@@ -4,7 +4,7 @@ if menuState != 0{
 	var _total = array_length(global.conditions)
 	var _spacing = 400
 	var _cx = room_width / 2
-	var _cy = room_height / 2
+	var _cy = room_height / 3
 	
 	// Draw all mini levels, skipping the current one
 	for (var i = 0; i < _total; i++) {

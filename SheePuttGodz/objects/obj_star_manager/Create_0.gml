@@ -8,12 +8,21 @@ function resetMetrics(){
 
 function submitStar(level, num){
 	if num == 1 {
+		if global.conditions[level].first_star.collected = false{
+			obj_son.play_sound(snd_yay,0)
+		}
 		global.conditions[level].first_star.collected = true
 	}
 	if num == 2 {
+		if global.conditions[level].second_star.collected = false{
+			obj_son.play_sound(snd_yay,0)
+		}
 		global.conditions[level].second_star.collected = true
 	}
 	if num == 3 {
+		if global.conditions[level].third_star.collected = false{
+			obj_son.play_sound(snd_yay,0)
+		}
 		global.conditions[level].third_star.collected = true
 	}
 }

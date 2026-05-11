@@ -16,6 +16,7 @@ function is_hovered(){
 }
 
 function on_clicked(){
+	obj_son.play_sound(snd_success,0)
 	global.conditions[obj_grid.level_index+1].unlocked = true
 	obj_level_manager.changeMenuState(1)
 	obj_grid.change_level(obj_grid.level_index)
