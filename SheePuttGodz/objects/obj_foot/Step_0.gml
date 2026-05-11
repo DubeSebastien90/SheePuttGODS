@@ -64,9 +64,12 @@ switch (state) {
 				}
             }
             with (obj_wolf) {
-                var _dist = point_distance(other.impact_on_grid.x, other.impact_on_grid.y, grid_x, grid_y)
+				var _h = sprite_get_height(sprite_index)
+				var _grid_pos = obj_grid.room_pos_to_game_pos(x, y + _h * 2)
+                var _dist = point_distance(other.impact_on_grid.x, other.impact_on_grid.y, _grid_pos.x, _grid_pos.y)
                 if _dist <= other.distStomp {
                     stun_time = stun_timer;
+					stunWolf()
                 }
             }
 			
