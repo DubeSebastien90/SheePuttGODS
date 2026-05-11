@@ -67,6 +67,7 @@ switch (state) {
                 var _dist = point_distance(other.impact_on_grid.x, other.impact_on_grid.y, grid_x, grid_y)
                 if _dist <= other.distStomp {
                     stun_time = stun_timer;
+					stunWolf()
                 }
             }
 			
