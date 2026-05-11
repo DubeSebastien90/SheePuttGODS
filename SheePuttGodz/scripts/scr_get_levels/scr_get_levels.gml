@@ -232,8 +232,8 @@ global.conditions = [
 		second_star: 
 		{
 			collected: false,
-			description: "Finish the level in max 4 stomps",
-			nbStomps: 4
+			description: "Finish the level in max 2 stomps",
+			nbStomps: 2
 		},
 		third_star: 
 		{
