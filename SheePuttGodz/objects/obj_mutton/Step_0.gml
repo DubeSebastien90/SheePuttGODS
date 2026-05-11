@@ -1,3 +1,9 @@
+if mort {
+    dx = 0;
+    dy = 0;
+    dz = dz <= 0 ? 0 : dz - grav;
+}
+
 press_up = keyboard_check(ord("W"))
 press_left = keyboard_check(ord("A"))
 press_down = keyboard_check(ord("S"))
