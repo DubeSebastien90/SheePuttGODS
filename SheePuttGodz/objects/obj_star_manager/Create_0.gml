@@ -59,7 +59,7 @@ function checkLevelTime(){
 				_tile = isInWinnableTile()
 			}
 		}
-	} else if obj_grid.level_index == 6{
+	} else if obj_grid.level_index == 5{
 		var bounced = false
 		with(obj_bumper){
 			if isBounced {
