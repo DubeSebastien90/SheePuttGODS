@@ -26,7 +26,7 @@ for (var i = 0; i < _total_frames; i++) {
                 case c_white: _char = "m"; break; // Mutton
                 case make_colour_rgb(232,59,59): _char = "v"; break; // Wolf
                 case make_color_rgb(251,255,134): _char = "e"; break; // Objective 
-                case make_colour_rgb(141,244,222): _char = "w"; break; // Water objective
+                case make_colour_rgb(143,248,226): _char = "w"; break; // Water objective
                 case make_colour_rgb(144,94,169): _char = "b"; break; // Bumper
             }
             _row_string += _char; 

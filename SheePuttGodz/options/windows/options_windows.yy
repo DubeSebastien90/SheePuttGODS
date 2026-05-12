@@ -1,6 +1,14 @@
 {
   "$GMWindowsOptions":"v2",
   "%Name":"Windows",
+  "ConfigValues":{
+    "NewConfig1":{
+      "option_windows_splash_screen":"splash/splash.png",
+      "option_windows_installer_finished":"installer/finished.bmp",
+      "option_windows_installer_header":"installer/header.bmp",
+      "option_windows_icon":"icons/icon.ico",
+    },
+  },
   "name":"Windows",
   "option_windows_allow_fullscreen_switching":false,
   "option_windows_borderless":false,

@@ -7,7 +7,7 @@ if clouds_active {
     }
 }
 
-if (shockwave_active) {
+/*if (shockwave_active) {
     shockwave_time++;
 
     var r1 = shockwave_time * shockwave_expand;
@@ -21,7 +21,7 @@ if (shockwave_active) {
 
     draw_set_alpha(1);
     if (shockwave_time >= shockwave_duration + shockwave_delay) shockwave_active = false;
-}
+}*/
 
 switch (state) {
     case "marking":

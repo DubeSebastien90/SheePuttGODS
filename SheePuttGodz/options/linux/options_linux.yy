@@ -1,6 +1,12 @@
 {
   "$GMLinuxOptions":"",
   "%Name":"Linux",
+  "ConfigValues":{
+    "NewConfig1":{
+      "option_linux_splash_screen":"splash/splash.png",
+      "option_linux_icon":"icons/64.png",
+    },
+  },
   "name":"Linux",
   "option_linux_allow_fullscreen":false,
   "option_linux_disable_sandbox":false,
