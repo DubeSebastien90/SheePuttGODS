@@ -1,4 +1,4 @@
-if keyboard_check(vk_anykey) || mouse_check_button(mb_any){
+if keyboard_check(vk_anykey){
 	room_goto(Room1)
 }
 
