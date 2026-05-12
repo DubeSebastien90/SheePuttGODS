@@ -51,6 +51,8 @@ footMovement = true
 
 result = 0
 
+outOfMap =false
+
 function _try_move(dx, dy, dz) {
     var applied_dx = 0;
     var applied_dy = 0;
@@ -133,7 +135,7 @@ function _try_move(dx, dy, dz) {
         if (push_y != 0) applied_dy += sign(push_y) * pushStrength;
     }
     // Axe Z
-    if (z + dz < 0) {
+    if (z + dz < 0) && !outOfMap {
         applied_dz = -z;
     } else {
         applied_dz = dz;
@@ -170,6 +172,9 @@ function isCompletementFoutu(){
 		if isInWinnableTile() == noone{
 			return true
 		}
+	}
+	if outOfMap{
+		return true
 	}
 	return mort
 }

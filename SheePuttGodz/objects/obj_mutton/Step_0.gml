@@ -31,6 +31,10 @@ on_land  = obj_grid.is_walkable(floor(grid_x), floor(grid_y));
 
 on_water = obj_grid.is_swimable(floor(grid_x), floor(grid_y));
 
+if !on_land && !on_water{
+	outOfMap = true
+}
+
 
 if (press_jump && z <= 0 && on_land) && canControl{
     dz = jumpForce;
