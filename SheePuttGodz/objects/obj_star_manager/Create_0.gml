@@ -61,7 +61,20 @@ function checkLevelTime(){
 				_tile = isInWinnableTile()
 			}
 		}
-	} else if obj_grid.level_index == 5{
+	} else if obj_grid.level_index == 4{
+		//end in same square
+		var _tile = noone
+		with(obj_mutton){
+			if _tile != noone && isInWinnableTile() != noone{
+				var _win_tile = isInWinnableTile()
+				if (_tile.x == _win_tile.x && _tile.y == _win_tile.y){
+					submitStar(obj_grid.level_index, 3)
+				}
+			} else {
+				_tile = isInWinnableTile()
+			}
+		}
+	} else if obj_grid.level_index == 6{
 		//zero bounces
 		var bounced = false
 		with(obj_bumper){
@@ -72,7 +85,7 @@ function checkLevelTime(){
 		if !bounced{
 			submitStar(obj_grid.level_index,3)
 		}
-	} else if obj_grid.level_index == 9{
+	} else if obj_grid.level_index == 10{
 		//stomp every wolves
 		var _stomped = true
 		with(obj_wolf){
@@ -83,7 +96,62 @@ function checkLevelTime(){
 		if _stomped{
 			submitStar(obj_grid.level_index,3)
 		}
-	}else{
+	} else if obj_grid.level_index == 11{
+		//stomp no wolves
+		var _no_stomped = true
+		with(obj_wolf){
+			if isStomped {
+				_no_stomped = false
+			}
+		}
+		if _no_stomped{
+			submitStar(obj_grid.level_index,3)
+		}
+	} else if obj_grid.level_index == 14{
+		//stomp no wolves
+		var _no_stomped = true
+		with(obj_wolf){
+			if isStomped {
+				_no_stomped = false
+			}
+		}
+		if _no_stomped{
+			submitStar(obj_grid.level_index,3)
+		}
+	} else if obj_grid.level_index == 15{
+		//stomp no wolves
+		var _no_stomped = true
+		with(obj_wolf){
+			if isStomped {
+				_no_stomped = false
+			}
+		}
+		if _no_stomped{
+			submitStar(obj_grid.level_index,3)
+		}
+	} else if obj_grid.level_index == 16{
+		//stomp no wolves
+		var _no_stomped = true
+		with(obj_wolf){
+			if isStomped {
+				_no_stomped = false
+			}
+		}
+		if _no_stomped{
+			submitStar(obj_grid.level_index,3)
+		}
+	} else if obj_grid.level_index == 18{
+		//stomp every wolves
+		var _stomped = true
+		with(obj_wolf){
+			if !isStomped {
+				_stomped = false
+			}
+		}
+		if _stomped{
+			submitStar(obj_grid.level_index,3)
+		}
+	} else{
 		if timer <= global.conditions[obj_grid.level_index].third_star.nbSeconds{
 			submitStar(obj_grid.level_index,3)
 		}
@@ -97,7 +165,11 @@ function checkStompTime(){
 }
 
 function checkAllMuttonsCompletion(){
-	if obj_level_manager.nbMuttonArrived == global.conditions[obj_grid.level_index].muttons_total{
+    if obj_grid.level_index == 14 {
+        if timer <= global.conditions[obj_grid.level_index].first_star.nbSeconds{
+			submitStar(obj_grid.level_index,3)
+		}
+    } else if obj_level_manager.nbMuttonArrived == global.conditions[obj_grid.level_index].muttons_total{
 		submitStar(obj_grid.level_index,1)
 	}
 }
