@@ -1,5 +1,7 @@
 random_set_seed(current_time + get_timer())
 
+HTML_BUILD = true
+
 tile_w = sprite_get_width(spr_tile) / 2;
 tile_h = sprite_get_height(spr_tile) / 4;
 tile_h_vertical = 2 * tile_h
@@ -49,6 +51,9 @@ nbLevels = array_length(global.cached_levels)
 level_index = -1;
 
 muttons_for_win = 10
+if !HTML_BUILD{
+	loadConditions()
+}
 change_level(0)
 
 function _iso_vec_to_screen(dx, dy) {
@@ -171,7 +176,7 @@ wave_intensity = shader_get_uniform(shd_wave, "u_intensity");
 shd_time = 0;
 
 if debug_mode{
-	audio_play_sound(snd_music_debug,0,true)
+	//audio_play_sound(snd_music_debug,0,true)
 } else {
 	audio_play_sound(snd_music,0,true)
 }

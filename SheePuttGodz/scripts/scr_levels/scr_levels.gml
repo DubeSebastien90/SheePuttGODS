@@ -888,3 +888,34 @@ global.conditions = [
 		},
 	},
 ]
+
+function saveConditions() {
+	var _save_data = [];
+	for (var i = 0; i < array_length(global.conditions); i++) {
+		var _cond = global.conditions[i];
+		array_push(_save_data, {
+			unlocked: _cond.unlocked,
+			first_star:  { collected: _cond.first_star.collected },
+			second_star: { collected: _cond.second_star.collected },
+			third_star:  { collected: _cond.third_star.collected },
+		});
+	}
+	var _file = file_text_open_write("conditions_save.json");
+	file_text_write_string(_file, json_stringify(_save_data));
+	file_text_close(_file);
+}
+
+function loadConditions() {
+	if (!file_exists("conditions_save.json")) return;
+	var _file = file_text_open_read("conditions_save.json");
+	var _json = file_text_read_string(_file);
+	file_text_close(_file);
+	var _save_data = json_parse(_json);
+	var _len = min(array_length(global.conditions), array_length(_save_data));
+	for (var i = 0; i < _len; i++) {
+		global.conditions[i].unlocked              = _save_data[i].unlocked;
+		global.conditions[i].first_star.collected  = _save_data[i].first_star.collected;
+		global.conditions[i].second_star.collected = _save_data[i].second_star.collected;
+		global.conditions[i].third_star.collected  = _save_data[i].third_star.collected;
+	}
+}

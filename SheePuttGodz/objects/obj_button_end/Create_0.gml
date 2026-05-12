@@ -30,4 +30,7 @@ function on_clicked(){
 	
 	obj_level_manager.changeMenuState(1)
 	obj_grid.change_level(obj_grid.level_index)
+	if !obj_grid.HTML_BUILD {
+		saveConditions()
+	}
 }
