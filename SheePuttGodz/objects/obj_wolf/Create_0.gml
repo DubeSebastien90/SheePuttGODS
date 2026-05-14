@@ -12,7 +12,7 @@ path_timer = 60;
 eat_time = 0;
 eat_timer = 60;
 stun_time = 0;
-stun_timer = 60*5;
+stun_timer = 60*8;
 
 rot = 0;
 tempsRot = 0;
