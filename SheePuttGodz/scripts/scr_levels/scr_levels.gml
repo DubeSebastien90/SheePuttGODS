@@ -484,7 +484,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Gather up!",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 3,
 		muttons_total: 6,
 		first_star: 
@@ -506,7 +506,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Hop hop hop",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 4,
 		muttons_total: 7,
 		first_star: 
@@ -529,7 +529,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Can you aim?",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 1,
 		muttons_total: 2,
 		first_star: 
@@ -551,7 +551,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Hmmmm donut",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 4,
 		muttons_total: 12,
 		first_star: 
@@ -573,7 +573,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Archipelago",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 1,
 		muttons_total: 3,
 		first_star: 
@@ -596,7 +596,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Boing boing!",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 2,
 		muttons_total: 4,
 		first_star: 
@@ -618,7 +618,7 @@ global.conditions = [
 	},
     {
 		level_title: "Par 2",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 1,
 		muttons_total: 4,
 		first_star: 
@@ -641,7 +641,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Bouncy castle",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 5,
 		muttons_total: 9,
 		first_star: 
@@ -664,7 +664,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Oh look, a new friend!",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 1,
 		muttons_total: 1,
 		first_star: 
@@ -687,7 +687,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Please don't eat me!",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 2,
 		muttons_total: 3,
 		first_star: 
@@ -709,7 +709,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Ambush!",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 2,
 		muttons_total: 4,
 		first_star: 
@@ -731,7 +731,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Castle siege",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 1,
 		muttons_total: 2,
 		first_star: 
@@ -754,7 +754,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Pinball machine",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 2,
 		muttons_total: 5,
 		first_star: 
@@ -777,7 +777,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Checkmate",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 1,
 		muttons_total: 1,
 		first_star: 
@@ -800,7 +800,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Gulf of mexico",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 1,
 		muttons_total: 2,
 		first_star: 
@@ -822,7 +822,7 @@ global.conditions = [
 	},
 	{
 		level_title: "Don't look behind!",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 2,
 		muttons_total: 4,
 		first_star: 
@@ -844,7 +844,7 @@ global.conditions = [
 	},
 	{
 		level_title: "The scriptures",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 1,
 		muttons_total: 1,
 		first_star: 
@@ -867,7 +867,7 @@ global.conditions = [
 	},
 	{
 		level_title: "That's a far strech",
-		unlocked: false,
+		unlocked: true,
 		muttons_for_win: 1,
 		muttons_total: 2,
 		first_star: 

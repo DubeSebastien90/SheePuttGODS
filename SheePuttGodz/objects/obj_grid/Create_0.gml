@@ -1,6 +1,6 @@
 random_set_seed(current_time + get_timer())
 
-HTML_BUILD = true
+HTML_BUILD = false
 
 tile_w = sprite_get_width(spr_tile) / 2;
 tile_h = sprite_get_height(spr_tile) / 4;
@@ -112,7 +112,7 @@ function is_swimable(tile_x, tile_y) {
 }
 
 function change_level(_level_index) {
-	if global.conditions[_level_index].unlocked == false && !debug_mode{
+	if global.conditions[_level_index].unlocked == false{
 		return
 	}
 	
@@ -164,6 +164,9 @@ function change_level(_level_index) {
     }
 }
 
+reset_r_count = 0;
+reset_r_timer = 0;
+
 wiggle_time = shader_get_uniform(shd_wiggle, "u_time");
 wiggle_amplitude = shader_get_uniform(shd_wiggle, "u_amplitude");
 wiggle_frequency = shader_get_uniform(shd_wiggle, "u_frequency");
@@ -177,6 +180,7 @@ shd_time = 0;
 
 if debug_mode{
 	//audio_play_sound(snd_music_debug,0,true)
+	audio_play_sound(snd_music,0,true)
 } else {
 	audio_play_sound(snd_music,0,true)
 }
