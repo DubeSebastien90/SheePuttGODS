@@ -552,7 +552,7 @@ global.conditions = [
 	{
 		level_title: "Hmmmm donut",
 		unlocked: true,
-		muttons_for_win: 2,
+		muttons_for_win: 3,
 		muttons_total: 12,
 		first_star: 
 		{

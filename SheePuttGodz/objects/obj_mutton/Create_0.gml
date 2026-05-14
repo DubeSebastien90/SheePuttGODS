@@ -157,16 +157,16 @@ function stomped(){
 }
 
 function isInWinnableTile(){
-	if !in_air && !mort{
-	with(obj_end_gate){
-		if (tile_i = floor(other.grid_x) && tile_j = floor(other.grid_y)){
-			return {x: tile_i, y: tile_j}
-		}
-	}
-	}
-	return noone
+    if !in_air && !mort{
+        with(obj_end_gate){
+            if (other.grid_x >= tile_i - 0.3 && other.grid_x < tile_i + 1.3
+             && other.grid_y >= tile_j - 0.3 && other.grid_y < tile_j + 1.3){
+                return {x: tile_i, y: tile_j}
+            }
+        }
+    }
+    return noone
 }
-
 function isCompletementFoutu(){
 	if !in_air && on_water{
 		if isInWinnableTile() == noone{

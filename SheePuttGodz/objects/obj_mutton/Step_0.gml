@@ -42,7 +42,7 @@ if (press_jump && z <= 0 && on_land) && canControl{
 }
 
 //wandering
-if !footMovement && !mort && obj_level_manager.menuState == 0{
+if !footMovement && !mort && obj_level_manager.menuState == 0 && !on_water{
 	if wandering{
 		wanderingCooldown -= 1
 		if wanderingCooldown < 0{
